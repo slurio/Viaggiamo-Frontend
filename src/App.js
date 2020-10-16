@@ -1,13 +1,11 @@
 import React from 'react';
 import './App.css';
-import SpeechInput from './Components/SpeechInput'
+import SpeechText from './Containers/SpeechText'
 
 function App() {
   return (
     <div className="App">
-      <header className="App-header">
-        <SpeechInput />
-      </header>
+      <SpeechText />
     </div>
   );
 }

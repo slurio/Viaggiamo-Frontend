@@ -6,9 +6,6 @@ const recognition = new SpeechRecognition()
 class SpeechInput extends React.Component {
     
     state = {
-        text: "",
-        voices: [],
-        fillText: "",
         voiceSpeed: 0.8
       }
     
@@ -43,32 +40,29 @@ class SpeechInput extends React.Component {
             let wordSpoken = e.results[0][0].transcript
             console.log(wordSpoken)
             this.setState({
-              fillText: wordSpoken
+              text: wordSpoken
             })
           }
         }
         
       }
     
-      renderChange = (e) => {
+      renderSpeed = (e) => {
         this.setState({
-          [e.target.name]: e.target.value
+          voiceSpeed: e.target.value
         })
+      }
+    
+      renderChange = (e) => {
+         this.props.renderChange(e.target.value)
       }
     
       renderOptions = () => {
         let synth = window.speechSynthesis
     
         let voices = synth.getVoices()
+        console.log(voices)
         return voices.map(voice => <option>{voice.name + ' (' + voice.lang + ')'}</option>)
-      }
-    
-      componentDidMount = () => {
-        window.speechSynthesis.onvoiceschanged = () => {
-            this.setState({
-              voices: window.speechSynthesis.getVoices()
-            })
-          }
       }
     
       renderVoice = (e) => {
@@ -78,7 +72,7 @@ class SpeechInput extends React.Component {
         let utterThis = new SpeechSynthesisUtterance()
       
         
-       let setVoice = this.state.voices.find(voice => voice.name === voiceName)
+       let setVoice = this.props.voices.find(voice => voice.name === voiceName)
         utterThis.rate = this.state.voiceSpeed
         utterThis.text = text
         utterThis.voice = setVoice
@@ -87,9 +81,8 @@ class SpeechInput extends React.Component {
     
       render() {
         return (
-          <>
-          <h1>Practice Speech Recognition</h1>
-          <form>
+          <div>
+          <form onSubmit={this.renderVoice}>
             <select name="language">
               <option>English</option>
               <option>French</option>
@@ -97,27 +90,20 @@ class SpeechInput extends React.Component {
               <option>German</option>
               <option>Italian</option>
             </select>
-            {/* <input type="submit" value="click and speak"/> */}
             <button type="button" name="start" onClick={this.renderSpeech}>Start</button>
             <button type="button" name="stop" onClick={this.renderSpeech}>Stop</button>
-          </form>
-          <br></br>
-          <textarea name="fill" value={this.state.fillText}/>
-          
-          <br></br>
-          <br></br>
-          <form onSubmit={this.renderVoice}>
-            <textarea name="text" value={this.state.text} placeholder="Please enter text here" onChange={this.renderChange}/>
+
             <label>Voice: </label>
             <select name="voice">
               {this.renderOptions()}
             </select>
             <label>Speed: </label>
-            <input type="number" min="0.5" max="2" step="0.1" name="voiceSpeed" value={this.state.voiceSpeed} onChange={this.renderChange}/>
+            <input type="number" min="0.5" max="2" step="0.1" name="voiceSpeed" value={this.state.voiceSpeed} onChange={this.renderSpeed}/>
             <input type="submit" value="submit"/>
+
+          <textarea name="text" placeholder="Please enter or talk text here" value={this.props.text} onChange={this.renderChange}/>
           </form>
-          
-          </>
+          </div>
         );
       }
       
