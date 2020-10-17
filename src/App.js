@@ -8,7 +8,7 @@ import Login from './Components/Login'
 import Navbar from './Components/Navbar'
 
 function App() {
-  let [currentUser, setCurrentUser] = useState('')
+  let [currentUser, setCurrentUser] = useState('test')
 
   function login(username) {
     const options = {
