@@ -4,7 +4,16 @@ import SpeechInput from '../Components/SpeechInput'
 
 export default class SpeechText extends React.Component {
   state ={
-    text: ''
+    text: '',
+    voices: []
+  }
+    
+  componentDidMount = () => {
+    window.speechSynthesis.onvoiceschanged = () => {
+        this.setState({
+          voices: window.speechSynthesis.getVoices()
+        })
+      }
   }
     
   renderChange = (newText) => {
@@ -17,8 +26,8 @@ export default class SpeechText extends React.Component {
   render(){
     return(
       <div className="speechtext">
-        <SpeechInput text={this.state.text} renderChange={this.renderChange}/>
-        <SpeechOutput text={this.state.text} />
+        <SpeechInput text={this.state.text} renderChange={this.renderChange} voices={this.state.voices}/>
+        <SpeechOutput text={this.state.text} voices={this.state.voices}/>
       </div>
     )
   }

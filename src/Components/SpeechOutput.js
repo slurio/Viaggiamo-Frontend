@@ -1,4 +1,4 @@
-import React, {useState, useEffect} from "react";
+import React from "react";
 let sourceText = "test words"; // props of input
 let sourceLang = "auto"
 let targetLang = "ja" // props of input
