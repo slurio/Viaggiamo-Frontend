@@ -44,10 +44,10 @@ const Form = styled.form`
   border-radius: 10px;
   width: 60vw;
   & > input {
-    padding: 10px;
+    font-size: calc(10px + 2vmin);
   }
   @media (min-width: 768px) {
-    width: 30vw;
+    width: 25vw;
   }
   `
 
@@ -57,7 +57,8 @@ const Button = styled.button`
   background-color: #282c34;
   border: 2px solid #870033;
   border-radius: 10px;
-  padding: 10px;
+  padding: 6px;
+  font-size: calc(10px + 2vmin);
   &:hover{
     background-color: #870033;
     cursor: pointer;
