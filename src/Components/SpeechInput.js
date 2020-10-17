@@ -64,13 +64,13 @@ class SpeechInput extends React.Component {
         return voices.map(voice => <option key={index += 1}>{voice.name + ' (' + voice.lang + ')'}</option>)
       }
 
-      componentDidMount = () => {
-        window.speechSynthesis.onvoiceschanged = () => {
-            this.setState({
-              voices: window.speechSynthesis.getVoices()
-            })
-          }
-      }
+      // componentDidMount = () => {
+      //   window.speechSynthesis.onvoiceschanged = () => {
+      //       this.setState({
+      //         voices: window.speechSynthesis.getVoices()
+      //       })
+      //     }
+      // }
     
       renderVoice = (e) => {
         e.preventDefault()
@@ -78,7 +78,7 @@ class SpeechInput extends React.Component {
         let voiceName = e.target.voice.value.split(' ')[0]
         let utterThis = new SpeechSynthesisUtterance()
         
-       let setVoice = this.state.voices.find(voice => voice.name === voiceName)
+       let setVoice = this.props.voices.find(voice => voice.name === voiceName)
         utterThis.rate = this.state.voiceSpeed
         utterThis.text = text
         utterThis.voice = setVoice

@@ -1,6 +1,9 @@
 import React from "react";
 import { Form } from "react-bootstrap";
 
+const SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition
+const recognition = new SpeechRecognition()
+
 class SpeechOutput extends React.Component {
   state={
     returnValue: '',
@@ -10,7 +13,7 @@ class SpeechOutput extends React.Component {
     
   renderVoice = (e) => {
     e.preventDefault()
-    let text = e.target.text.value
+    let text = e.target.translateText.value
     let voiceName = e.target.voice.value.split(' ')[0]
     let utterThis = new SpeechSynthesisUtterance()
   
@@ -77,7 +80,7 @@ class SpeechOutput extends React.Component {
   render() {
     return (
       <div>
-         <form >
+         <form onSubmit={this.renderVoice}>
           <Form.Group controlId="language.ControlSelect1">
             <Form.Label>Choose Language:</Form.Label>
               <Form.Control as="select" name="language" onChange={this.selectLang}>
@@ -104,7 +107,7 @@ class SpeechOutput extends React.Component {
           <button onClick={this.translate}type="button" name="translate" >Translate</button>
 
           <Form.Group controlId="text.ControlInput2">
-              <Form.Control as="textarea" rows="8" placeholder="Translated text will appear here :)" name="translate-text" value={this.state.returnValue}/>
+              <Form.Control as="textarea" rows="8" placeholder="Translated text will appear here :)" name="translateText" value={this.state.returnValue}/>
           </Form.Group>
       
           <input type="submit" value="Hear Out Loud"/>
