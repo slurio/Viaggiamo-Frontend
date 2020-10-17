@@ -4,21 +4,27 @@ import SpeechInput from '../Components/SpeechInput'
 
 export default class SpeechText extends React.Component {
   state ={
-    text: ''
+    text: '',
+    inputLang: ""
   }
     
   renderChange = (newText) => {
     this.setState({
       text: newText
     })
-    console.log('upper state', this.state.text)
+  }
+
+  renderInputLang = (language) => {
+    this.setState({
+      inputLang: language
+    })
   }
   
   render(){
     return(
       <div className="speechtext">
-        <SpeechInput text={this.state.text} renderChange={this.renderChange}/>
-        <SpeechOutput text={this.state.text} />
+        <SpeechInput text={this.state.text} renderChange={this.renderChange} renderInputLang={this.renderInputLang}/>
+        <SpeechOutput text={this.state.text} inputLang={this.state.inputLang}/>
       </div>
     )
   }
