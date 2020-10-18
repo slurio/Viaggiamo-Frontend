@@ -5,9 +5,16 @@ import SpeechInput from '../Components/SpeechInput'
 export default class SpeechText extends React.Component {
   state ={
     text: '',
+<<<<<<< HEAD
     voices: []
   }
     
+=======
+    inputLang: "en",
+    voices: []
+  }
+
+>>>>>>> Slurio
   componentDidMount = () => {
     window.speechSynthesis.onvoiceschanged = () => {
         this.setState({
@@ -20,14 +27,24 @@ export default class SpeechText extends React.Component {
     this.setState({
       text: newText
     })
-    console.log('upper state', this.state.text)
+  }
+
+  renderInputLang = (language) => {
+    this.setState({
+      inputLang: language
+    })
   }
   
   render(){
     return(
       <div className="speechtext">
+<<<<<<< HEAD
         <SpeechInput text={this.state.text} renderChange={this.renderChange} voices={this.state.voices}/>
         <SpeechOutput text={this.state.text} voices={this.state.voices}/>
+=======
+        <SpeechInput voices={this.state.voices} text={this.state.text} renderChange={this.renderChange} renderInputLang={this.renderInputLang}/>
+        <SpeechOutput voices={this.state.voices} text={this.state.text} inputLang={this.state.inputLang}/>
+>>>>>>> Slurio
       </div>
     )
   }

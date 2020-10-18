@@ -1,6 +1,8 @@
 .App {
   text-align: center;
-  background-color: #282c34;
+  background-image: url('images/bg.jpg');
+  background-repeat: repeat;
+  background-size: auto;
   min-height: 100vh;
   max-width: 100vw;
   display: flex;
@@ -12,7 +14,7 @@
 
 .speechtext{
   display: flex;
-  justify-content: space-around;
+  justify-content: space-between;
 }
 
 .App-link {

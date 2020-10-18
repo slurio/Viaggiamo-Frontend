@@ -1,6 +1,12 @@
+<<<<<<< HEAD
 import React, { useState, useEffect } from 'react'
 // import 'bootstrap/dist/css/bootstrap.min.css'
 import './App.css'
+=======
+import React from 'react';
+import 'bootstrap/dist/css/bootstrap.min.css';
+import './App.css';
+>>>>>>> Slurio
 import SpeechText from './Containers/SpeechText'
 import Message from './Containers/Message'
 import UserProfile from './Containers/UserProfile'
