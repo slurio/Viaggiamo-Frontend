@@ -1,5 +1,5 @@
 .App {
-  text-align: center;
+  /* text-align: center; */
   background-image: url('images/bg.jpg');
   background-repeat: repeat;
   background-size: auto;
@@ -12,6 +12,31 @@
   color: white;
 }
 
+<<<<<<< HEAD
+=======
+.speechtext{
+  display: flex;
+  justify-content: space-around;
+  font-size: 65%;
+}
+
+.SpeechOutput{
+  width: 45%;
+  color: grey;
+  background-color: white;
+  padding: 25px;
+  border-radius: 25px;
+}
+
+.SpeechInput{
+  width: 45%;
+  color: grey;
+  background-color: white;
+  padding: 25px;
+  border-radius: 25px;
+}
+
+>>>>>>> Slurio
 .App-link {
   color: #61dafb;
 }
