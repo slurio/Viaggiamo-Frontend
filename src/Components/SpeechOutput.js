@@ -1,8 +1,5 @@
 import React from "react";
-import { Form } from "react-bootstrap";
-
-const SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition
-const recognition = new SpeechRecognition()
+import { Form, Button, Col} from "react-bootstrap";
 
 class SpeechOutput extends React.Component {
   state={
@@ -79,9 +76,11 @@ class SpeechOutput extends React.Component {
 
   render() {
     return (
-      <div>
-         <form onSubmit={this.renderVoice}>
-          <Form.Group controlId="language.ControlSelect1">
+      <div class="SpeechOutput">
+         <Form onSubmit={this.renderVoice}>
+           <Form.Row>
+            
+             <Form.Group as={Col} controlId="language.ControlSelect1">
             <Form.Label>Choose Language:</Form.Label>
               <Form.Control as="select" name="language" onChange={this.selectLang}>
                 <option>English</option>
@@ -91,66 +90,42 @@ class SpeechOutput extends React.Component {
                 <option>Italian</option>
               </Form.Control>
           </Form.Group>
-
-          <Form.Group controlId="voice.ControlSelect1">
+             
+            
+              <Form.Group as={Col} controlId="voice.ControlSelect1">
             <Form.Label>Choose Voice:</Form.Label>
             <Form.Control as="select" name="voice">
               {this.renderOptions()}
             </Form.Control>
           </Form.Group>
 
-          <Form.Group controlId="speed.ControlInput1">
+          <Form.Group as={Col} controlId="speed.ControlInput1">
             <Form.Label>Choose Speed:</Form.Label>
             <Form.Control type="number" name="voiceSpeed" min="0.5" max="2" step="0.1" value={this.state.voiceSpeed} onChange={this.renderSpeed}></Form.Control>
           </Form.Group>
 
-          <button onClick={this.translate}type="button" name="translate" >Translate</button>
+              
+           </Form.Row>
 
           <Form.Group controlId="text.ControlInput2">
-              <Form.Control as="textarea" rows="8" placeholder="Translated text will appear here :)" name="translateText" value={this.state.returnValue}/>
+              <Form.Control readOnly as="textarea" rows="8" placeholder="Translated text will appear here :)" name="translateText" value={this.state.returnValue}/>
           </Form.Group>
-      
-          <input type="submit" value="Hear Out Loud"/>
-                         
-          </form>
+
+          <Form.Row>
+            <Form.Group controlId="button1">
+                <Button variant="primary" type="submit">
+                  Hear Out Loud
+                </Button>
+              </Form.Group>
+              <Form.Group controlId="button2">  
+                <Button onClick={this.translate}type="button" name="translate" variant="success" size="">Translate</Button>
+              </Form.Group> 
+          </Form.Row>
+                        
+        </Form>
       </div>
     )
   }
 }
 
 export default SpeechOutput;
-{/* <form onSubmit={this.renderVoice}>
-            <Form.Group controlId="language.ControlSelect1">
-              <Form.Label>Choose Language:</Form.Label>
-                <Form.Control as="select" name="language">
-                  <option>English</option>
-                  <option>French</option>
-                  <option>Spanish</option>
-                  <option>German</option>
-                  <option>Italian</option>
-                </Form.Control>
-             </Form.Group>
-
-            <Form.Group controlId="voice.ControlSelect1">
-              <Form.Label>Choose Voice:</Form.Label>
-              <Form.Control as="select" name="voice">
-                {this.renderOptions()}
-              </Form.Control>
-            </Form.Group>
-
-            <Form.Group controlId="speed.ControlInput1">
-              <Form.Label>Choose Speed:</Form.Label>
-              <Form.Control type="number" name="voiceSpeed" min="0.5" max="2" step="0.1" value={this.state.voiceSpeed} onChange={this.renderSpeed}></Form.Control>
-            </Form.Group>
-
-            <Form.Group controlId="text.ControlInput2">
-              <Form.Control as="textarea" rows="8" placeholder="Please enter or talk text here" name="text" value={this.props.text} onChange={this.renderChange}/>
-            </Form.Group>
- 
-            <button type="button" name="start" onClick={this.renderSpeech}>Start</button>
-            <button type="button" name="stop" onClick={this.renderSpeech}>Stop</button>
-
-          
-            <input type="submit" value="Hear Out Loud"/>
-
-          </form> */}

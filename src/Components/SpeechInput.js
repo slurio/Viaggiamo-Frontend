@@ -1,5 +1,5 @@
 import React from 'react'
-import { Form } from 'react-bootstrap'
+import { Form, Col, Button } from 'react-bootstrap'
 
 const SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition
 const recognition = new SpeechRecognition()
@@ -8,7 +8,8 @@ class SpeechInput extends React.Component {
     
     state = {
         voiceSpeed: 0.8,
-        voices: []
+        voices: [],
+        speak: false
       }
     
       renderSpeech = (e) => {
@@ -17,7 +18,7 @@ class SpeechInput extends React.Component {
     
         recognition.continuous = true;
         recognition.interimResults = false;
-    
+        
         if(e.target.parentNode.language.value === "English"){
           recognition.lang = 'en-US'
         } else if(e.target.parentNode.language.value === "French"){
@@ -30,10 +31,17 @@ class SpeechInput extends React.Component {
           recognition.lang = 'it'
         }
         
-        if(e.target.name === 'start'){
+        if(this.state.speak === false){
+          
+          this.setState({
+            speak: true
+          })
           recognition.start()
           console.log('speak!')
         }else{
+          this.setState({
+            speak: false
+          })
           recognition.stop()
           console.log('stop')
 
@@ -63,14 +71,6 @@ class SpeechInput extends React.Component {
         let index = 0
         return voices.map(voice => <option key={index += 1}>{voice.name + ' (' + voice.lang + ')'}</option>)
       }
-
-      // componentDidMount = () => {
-      //   window.speechSynthesis.onvoiceschanged = () => {
-      //       this.setState({
-      //         voices: window.speechSynthesis.getVoices()
-      //       })
-      //     }
-      // }
     
       renderVoice = (e) => {
         e.preventDefault()
@@ -103,40 +103,53 @@ class SpeechInput extends React.Component {
     
       render() {
         return (
-          <div>
+          
+          <div class="SpeechInput">
+
+            
+          
           <form onSubmit={this.renderVoice}>
-            <Form.Group controlId="language.ControlSelect1">
-              <Form.Label>Choose Language:</Form.Label>
-                <Form.Control as="select" name="language" onChange={this.getLanguage}>
-                  <option>English</option>
-                  <option>French</option>
-                  <option>Spanish</option>
-                  <option>German</option>
-                  <option>Italian</option>
+          
+            <Form.Row>
+              <Form.Group as={Col} controlId="language.ControlSelect1">
+                <Form.Label>Choose Language:</Form.Label>
+                  <Form.Control as="select" name="language" onChange={this.getLanguage}>
+                    <option>English</option>
+                    <option>French</option>
+                    <option>Spanish</option>
+                    <option>German</option>
+                    <option>Italian</option>
+                  </Form.Control>
+              </Form.Group>
+
+              <Form.Group as={Col} controlId="voice.ControlSelect1">
+                <Form.Label>Choose Voice:</Form.Label>
+                <Form.Control as="select" name="voice">
+                  {this.renderOptions()}
                 </Form.Control>
-             </Form.Group>
+              </Form.Group>
 
-            <Form.Group controlId="voice.ControlSelect1">
-              <Form.Label>Choose Voice:</Form.Label>
-              <Form.Control as="select" name="voice">
-                {this.renderOptions()}
-              </Form.Control>
-            </Form.Group>
-
-            <Form.Group controlId="speed.ControlInput1">
-              <Form.Label>Choose Speed:</Form.Label>
-              <Form.Control type="number" name="voiceSpeed" min="0.5" max="2" step="0.1" value={this.state.voiceSpeed} onChange={this.renderSpeed}></Form.Control>
-            </Form.Group>
+              <Form.Group as={Col} controlId="speed.ControlInput1">
+                <Form.Label>Choose Speed:</Form.Label>
+                <Form.Control type="number" name="voiceSpeed" min="0.5" max="2" step="0.1" value={this.state.voiceSpeed} onChange={this.renderSpeed}></Form.Control>
+              </Form.Group>
+            </Form.Row>
+          
 
             <Form.Group controlId="text.ControlInput2">
               <Form.Control as="textarea" rows="8" placeholder="Please enter or talk text here" name="text" value={this.props.text} onChange={this.renderChange}/>
             </Form.Group>
- 
-            <button type="button" name="start" onClick={this.renderSpeech}>Start</button>
-            <button type="button" name="stop" onClick={this.renderSpeech}>Stop</button>
 
-          
-            <input type="submit" value="Hear Out Loud"/>
+           
+            {!this.state.speak ? <Button type="button" name="start" variant="outline-success" onClick={this.renderSpeech}>Start</Button> :  <Button type="button" name="stop" variant="outline-danger" onClick={this.renderSpeech}>Stop</Button>}
+           
+            <Button variant="primary" type="submit">
+                  Hear Out Loud
+                </Button>
+               
+        
+ 
+         
 
           </form>
           </div>
