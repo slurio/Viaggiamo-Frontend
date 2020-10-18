@@ -1,8 +1,8 @@
 import React from "react";
 import { Form } from "react-bootstrap";
 
-const SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition
-const recognition = new SpeechRecognition()
+// const SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition
+// const recognition = new SpeechRecognition()
 
 class SpeechOutput extends React.Component {
   state={

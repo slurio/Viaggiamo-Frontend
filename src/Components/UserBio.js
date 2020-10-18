@@ -21,7 +21,7 @@ const Container = styled.div`
   width: 60vw;
   padding: 20px;
   margin: 30px;
-  border: 2px solid #967dbf;
+  border: 6px solid #d2869c;
   border-radius: 10px;
   @media (min-width: 768px) {
     height: 80vh;
@@ -32,5 +32,6 @@ const Img = styled.img`
   max-height: 30vh;
   max-width: 30vw;
   border-radius: 30px;
-  box-shadow: 0px 0px 20px #967dbf;
+  box-shadow: 0px 0px 30px #d2869c;
+  /* 967dbf */
   `

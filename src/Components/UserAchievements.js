@@ -50,7 +50,7 @@ const Container = styled.div`
   width: 60vw;
   padding: 20px;
   margin: 30px;
-  border: 2px solid #967dbf;
+  border: 6px solid #d2869c;
   border-radius: 10px;
   @media (min-width: 768px) {
     height: 80vh;

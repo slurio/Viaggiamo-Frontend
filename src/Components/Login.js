@@ -31,7 +31,7 @@ const Container = styled.div`
 const Img = styled.img`
   max-width: 80%;
   border-radius: 30px;
-  box-shadow: 0px 0px 20px #967dbf;
+  box-shadow: 0px 0px 30px #d2869c;
   `
 
 const Form = styled.form`
