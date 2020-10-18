@@ -40,7 +40,7 @@ const Form = styled.form`
   margin-top: 30px;
   margin-bottom: 50px;
   padding: 10px;
-  border: 2px solid #967dbf;
+  border: 4px solid #d2869c;
   border-radius: 10px;
   width: 60vw;
   & > input {

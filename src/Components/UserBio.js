@@ -20,7 +20,7 @@ const Container = styled.div`
   justify-content: center;
   width: 60vw;
   padding: 20px;
-  margin: 30px;
+  margin: 10px;
   border: 6px solid #d2869c;
   border-radius: 10px;
   @media (min-width: 768px) {
