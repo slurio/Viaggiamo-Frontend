@@ -1,12 +1,7 @@
-<<<<<<< HEAD
-import React, { useState, useEffect } from 'react'
-// import 'bootstrap/dist/css/bootstrap.min.css'
-import './App.css'
-=======
-import React from 'react';
-import 'bootstrap/dist/css/bootstrap.min.css';
+import React, { useState } from 'react'
+import { Route } from 'react-router-dom';
+import 'bootstrap/dist/css/bootstrap.min.css'
 import './App.css';
->>>>>>> Slurio
 import SpeechText from './Containers/SpeechText'
 import Message from './Containers/Message'
 import UserProfile from './Containers/UserProfile'
@@ -14,7 +9,7 @@ import Login from './Components/Login'
 import Navbar from './Components/Navbar'
 
 function App() {
-  let [currentUser, setCurrentUser] = useState('test')
+  let [currentUser, setCurrentUser] = useState('')
 
   function login(username) {
     const options = {
@@ -33,10 +28,12 @@ function App() {
   return (
     <div className="App">
       {currentUser === '' 
-        ? <Login login={login}/>
+        ? <Route path="/" exact render={() => <Login login={login}/>} />
         : <>
             <Navbar />
-            <UserProfile currentUser={currentUser}/>
+            <Route path="/" exact render={() => <UserProfile currentUser={currentUser}/>} />
+            <Route path="/speech" render={() => <SpeechText />} />
+            <Route path="/messages" render={() => <Message />} />
           </>
       }
     </div>

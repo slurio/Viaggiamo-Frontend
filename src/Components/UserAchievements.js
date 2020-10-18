@@ -10,31 +10,31 @@ import trophy from '../images/trophy.png'
 function UserAchievements(props){
   return(
     <Container>
-        <img style={{maxWidth: "15vw", maxHeight: "15vh", marginLeft: "auto", marginRight: "auto" }} src={trophy}></img>
+        <img style={{maxWidth: "15vw", maxHeight: "15vh", marginLeft: "auto", marginRight: "auto" }} src={trophy} alt="" />
         <h3>Achievements</h3>
 
       <AchievementContainer>
-        <AchievementImage src={flagES}></AchievementImage>
+        <AchievementImage src={flagES} alt="" ></AchievementImage>
         <AchievementText>Spanish - 2/10</AchievementText>
       </AchievementContainer>
       
       <AchievementContainer>
-        <AchievementImage src={flagGE}></AchievementImage>
+        <AchievementImage src={flagGE} alt="" ></AchievementImage>
         <AchievementText>German - 4/10</AchievementText>
       </AchievementContainer>
       
       <AchievementContainer>
-        <AchievementImage src={flagEN}></AchievementImage>
+        <AchievementImage src={flagEN} alt="" ></AchievementImage>
         <AchievementText>English - 10/10</AchievementText>
       </AchievementContainer>
       
       <AchievementContainer>
-        <AchievementImage src={flagIT}></AchievementImage>
+        <AchievementImage src={flagIT} alt="" ></AchievementImage>
         <AchievementText>Italian - 1/10</AchievementText>
       </AchievementContainer>
       
       <AchievementContainer>
-        <AchievementImage src={flagFR}></AchievementImage>
+        <AchievementImage src={flagFR} alt="" ></AchievementImage>
         <AchievementText>French - 6/10</AchievementText>
       </AchievementContainer>
 

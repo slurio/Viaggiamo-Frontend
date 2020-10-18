@@ -1,14 +1,15 @@
 import React from 'react'
 import styled from 'styled-components'
+import { NavLink } from 'react-router-dom';
 
 function Navbar(){
   return(
     <Container>
-      <a href="/">Home</a>
-      <a href="/">Lessons</a>
-      <a href="/">Speech/Text</a>
-      <a href="/">Messages</a>
-      <a href="/">Log Out</a>
+      <NavLink to="/" exact >Home</NavLink>
+      <NavLink to="/lessons" exact >Lessons</NavLink>
+      <NavLink to="/speech" exact >Speech/Text</NavLink>
+      <NavLink to="/messages" exact >Messages</NavLink>
+      <NavLink to="/" exact >Log Out</NavLink>
     </Container>
   )
 }

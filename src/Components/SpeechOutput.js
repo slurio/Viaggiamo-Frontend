@@ -1,12 +1,5 @@
 import React from "react";
-<<<<<<< HEAD
-let sourceText = "test words"; // props of input
-let sourceLang = "auto"
-let targetLang = "ja" // props of input
-const url = "https://translate.googleapis.com/translate_a/single?client=gtx&sl=" + sourceLang + "&tl=" + targetLang + "&dt=t&q=" + encodeURI(sourceText);
-=======
 import { Form } from "react-bootstrap";
->>>>>>> Slurio
 
 const SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition
 const recognition = new SpeechRecognition()

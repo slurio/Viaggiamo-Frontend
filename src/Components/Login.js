@@ -54,7 +54,7 @@ const Form = styled.form`
 const Button = styled.button`
   margin-top: 5px;
   color: white;
-  background-color: #282c34;
+  background-color: transparent;
   border: 2px solid #870033;
   border-radius: 10px;
   padding: 6px;
