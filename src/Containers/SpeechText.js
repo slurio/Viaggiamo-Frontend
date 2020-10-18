@@ -1,6 +1,7 @@
 import React from 'react'
 import SpeechOutput from '../Components/SpeechOutput'
 import SpeechInput from '../Components/SpeechInput'
+import styled from 'styled-components'
 
 export default class SpeechText extends React.Component {
   state ={
@@ -31,11 +32,17 @@ export default class SpeechText extends React.Component {
   
   render(){
     return(
-      <div className="speechtext">
+      <Container>
         <SpeechInput voices={this.state.voices} text={this.state.text} renderChange={this.renderChange} renderInputLang={this.renderInputLang}/>
         <SpeechOutput voices={this.state.voices} text={this.state.text} inputLang={this.state.inputLang}/>
-      </div>
+      </Container>
     )
   }
 
 }
+
+const Container = styled.div`
+  display: flex;
+  justify-content: space-evenly;
+  margin: 20px;
+  `

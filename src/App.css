@@ -12,11 +12,6 @@
   color: white;
 }
 
-.speechtext{
-  display: flex;
-  justify-content: space-between;
-}
-
 .App-link {
   color: #61dafb;
 }
