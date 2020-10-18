@@ -34,7 +34,7 @@ function App() {
             <Navbar />
             <Route path="/" exact render={() => <UserProfile currentUser={currentUser}/>} />
             <Route path="/speech" render={() => <SpeechText />} />
-            <Route path="/messages" render={() => <Message />} />
+            <Route path="/messages" render={() => <Message categories={currentUser.categories}/>} />
             <Route path="/lessons" render={() => <Lessons />} />
           </>
       }
