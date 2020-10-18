@@ -12,14 +12,6 @@
   color: white;
 }
 
-<<<<<<< HEAD
-=======
-.speechtext{
-  display: flex;
-  justify-content: space-around;
-  font-size: 65%;
-}
-
 .SpeechOutput{
   width: 45%;
   color: grey;
@@ -36,7 +28,6 @@
   border-radius: 25px;
 }
 
->>>>>>> Slurio
 .App-link {
   color: #61dafb;
 }

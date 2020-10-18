@@ -5,6 +5,7 @@ import './App.css';
 import SpeechText from './Containers/SpeechText'
 import Message from './Containers/Message'
 import UserProfile from './Containers/UserProfile'
+import Lessons from './Containers/Lessons'
 import Login from './Components/Login'
 import Navbar from './Components/Navbar'
 
@@ -34,6 +35,7 @@ function App() {
             <Route path="/" exact render={() => <UserProfile currentUser={currentUser}/>} />
             <Route path="/speech" render={() => <SpeechText />} />
             <Route path="/messages" render={() => <Message />} />
+            <Route path="/lessons" render={() => <Lessons />} />
           </>
       }
     </div>

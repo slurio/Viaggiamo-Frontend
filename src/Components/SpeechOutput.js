@@ -1,12 +1,5 @@
 import React from "react";
-<<<<<<< HEAD
-import { Form } from "react-bootstrap";
-
-// const SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition
-// const recognition = new SpeechRecognition()
-=======
 import { Form, Button, Col} from "react-bootstrap";
->>>>>>> Slurio
 
 class SpeechOutput extends React.Component {
   state={

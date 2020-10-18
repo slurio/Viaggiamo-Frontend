@@ -45,4 +45,5 @@ const Container = styled.div`
   display: flex;
   justify-content: space-evenly;
   margin: 20px;
+  font-size: 65%;
   `
