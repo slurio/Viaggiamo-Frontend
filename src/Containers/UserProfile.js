@@ -15,11 +15,11 @@ export default function UserProfile(props) {
 const Container = styled.div`
   display: flex;
   flex-direction: column;
+  justify-content: space-evenly;
   align-items: center;
-  justify-content: center;
   margin-top: 40px;
   max-width: 100vw;
   @media (min-width: 768px) {
-    flex-direction: row-reverse
+    flex-direction: row-reverse;
   }
   `

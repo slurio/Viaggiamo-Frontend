@@ -18,13 +18,14 @@ const Container = styled.div`
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  width: 60vw;
+  width: 70vw;
   padding: 20px;
-  margin: 30px;
+  margin: 20px;
   border: 6px solid #d2869c;
   border-radius: 10px;
   @media (min-width: 768px) {
-    height: 80vh;
+    width: 40vw;
+    flex: 1;
   }
   `
 

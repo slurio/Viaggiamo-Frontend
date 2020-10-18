@@ -47,13 +47,14 @@ const Container = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: center;
-  width: 60vw;
+  width: 70vw;
   padding: 20px;
-  margin: 30px;
+  margin: 20px;
   border: 6px solid #d2869c;
   border-radius: 10px;
   @media (min-width: 768px) {
-    height: 80vh;
+    width: 40vw;
+    flex: 1;
   }
   `
 
