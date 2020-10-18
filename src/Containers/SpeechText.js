@@ -44,6 +44,12 @@ export default class SpeechText extends React.Component {
 const Container = styled.div`
   display: flex;
   justify-content: space-evenly;
-  margin: 20px;
+  /* align-items: center; */
+  margin: auto;
   font-size: 65%;
+
+  @media (max-width: 768px) {
+    flex-direction: column;
+    align-items: center;
+  }
   `

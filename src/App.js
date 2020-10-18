@@ -10,7 +10,7 @@ import Login from './Components/Login'
 import Navbar from './Components/Navbar'
 
 function App() {
-  let [currentUser, setCurrentUser] = useState('s')
+  let [currentUser, setCurrentUser] = useState('')
 
   function login(username) {
     const options = {

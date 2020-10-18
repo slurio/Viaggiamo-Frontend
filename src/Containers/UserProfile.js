@@ -6,8 +6,13 @@ import styled from 'styled-components'
 export default function UserProfile(props) {
     return(
       <Container>
-        <UserBio currentUser={props.currentUser}/>
-        <UserAchievements currentUser={props.currentUser}/>
+        <InnerContainer>
+          <UserBio className="temp" currentUser={props.currentUser}/>
+        </InnerContainer>
+        
+        <InnerContainer>
+          <UserAchievements currentUser={props.currentUser}/>
+        </InnerContainer>
       </Container>
     )
 }
@@ -16,10 +21,30 @@ const Container = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: space-evenly;
-  align-items: center;
-  margin-top: 40px;
+  padding: 20px;
   max-width: 100vw;
   @media (min-width: 768px) {
+    margin-top: 40px;
     flex-direction: row-reverse;
+  }
+  @media (max-width: 768px) {
+    align-items: center;
+  }
+  `
+
+const InnerContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 70vw;
+  border: 6px solid #d2869c;
+  border-radius: 10px;
+  padding: 20px;
+  @media (min-width: 768px) {
+    width: 40vw;
+  }
+  @media (max-width: 768px) {
+    margin: 20px;
   }
   `

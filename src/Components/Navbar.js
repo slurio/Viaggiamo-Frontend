@@ -5,12 +5,12 @@ import oraqleScript from '../fonts/OraqleScript/OraqleScript.woff';
 
 function Navbar(){
 
-  let [linkDisplay, setLinkDisplay] = useState('links')
+  let [linkDisplay, setLinkDisplay] = useState('hideLinks')
 
   function openNavbar() {
-    linkDisplay === 'links'
-    ? setLinkDisplay('')
-    : setLinkDisplay('links')
+    linkDisplay === 'hideLinks'
+    ? setLinkDisplay('showLinks')
+    : setLinkDisplay('hideLinks')
   }
 
   return(
@@ -51,9 +51,14 @@ const Container = styled.div`
   }
   @media (max-width: 768px) {
     flex-direction: column;
-    & > .links{
+    & > .hideLinks{
       display: none;
-    }    
+    }
+    & > .showLinks{
+      background-color: #525252;
+      text-align: center;
+      width: 100vw;
+    }
   }
   `
 

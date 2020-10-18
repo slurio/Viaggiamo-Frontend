@@ -27,6 +27,14 @@
   padding: 25px;
   border-radius: 25px;
 }
+@media(max-width: 768px) {
+  .SpeechOutput {
+    width: 80vw;
+  }
+  .SpeechInput {
+    width: 80vw;
+  }
+} 
 
 .App-link {
   color: #61dafb;

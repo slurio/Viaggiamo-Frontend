@@ -9,54 +9,38 @@ import trophy from '../images/trophy.png'
 
 function UserAchievements(props){
   return(
-    <Container>
-        <img style={{maxWidth: "15vw", maxHeight: "15vh", marginLeft: "auto", marginRight: "auto" }} src={trophy} alt="" />
-        <h3>Achievements</h3>
+    <>
+      <img style={{maxWidth: "15vw", maxHeight: "15vh", marginLeft: "auto", marginRight: "auto" }} src={trophy} alt="" />
+      <h3>Achievements</h3>
 
       <AchievementContainer>
-        <AchievementImage src={flagES} alt="" ></AchievementImage>
-        <AchievementText>Spanish - 2/10</AchievementText>
+        <AchievementImage src={flagES} alt="" />
+        Spanish - 2/10
       </AchievementContainer>
       
       <AchievementContainer>
-        <AchievementImage src={flagGE} alt="" ></AchievementImage>
-        <AchievementText>German - 4/10</AchievementText>
+        <AchievementImage src={flagGE} alt="" />
+        German - 4/10
       </AchievementContainer>
       
       <AchievementContainer>
-        <AchievementImage src={flagEN} alt="" ></AchievementImage>
-        <AchievementText>English - 10/10</AchievementText>
+        <AchievementImage src={flagEN} alt="" />
+        English - 10/10
       </AchievementContainer>
       
       <AchievementContainer>
-        <AchievementImage src={flagIT} alt="" ></AchievementImage>
-        <AchievementText>Italian - 1/10</AchievementText>
+        <AchievementImage src={flagIT} alt="" />
+        Italian - 1/10
       </AchievementContainer>
       
       <AchievementContainer>
-        <AchievementImage src={flagFR} alt="" ></AchievementImage>
-        <AchievementText>French - 6/10</AchievementText>
+        <AchievementImage src={flagFR} alt="" />
+        French - 6/10
       </AchievementContainer>
-
-    </Container>
+    </>
   )
 }
 export default UserAchievements
-
-const Container = styled.div`
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  width: 70vw;
-  padding: 20px;
-  margin: 20px;
-  border: 6px solid #d2869c;
-  border-radius: 10px;
-  @media (min-width: 768px) {
-    width: 40vw;
-    flex: 1;
-  }
-  `
 
 const AchievementContainer = styled.div`
   display: flex;
@@ -69,7 +53,4 @@ const AchievementImage = styled.img`
   max-height: 15vh;
   margin: 2px;
   padding: 5px;
-  `
-
-const AchievementText = styled.p`
   `
