@@ -33,8 +33,13 @@ const Container = styled.div`
   height: 100vh;
   `
 const Title = styled.h2`
-  color: #66fcf1;
-  font-size: calc(40px + 2vmin);
+  color: #A594F9;
+  @font-face {
+    font-family: 'oraqleScript';
+    src: local('oraqleScript'), url(${oraqleScript}) format('woff');
+  }
+  font-family: 'oraqleScript';
+  font-size: calc(60px + 2vmin);
 `
 
 const Img = styled.img`
@@ -44,13 +49,13 @@ const Img = styled.img`
 
 const Form = styled.form`
   font-weight: bold;
-  color: #EBEBEB;
+  color: #A594F9;
   display: flex;
   flex-direction: column;
   margin-top: 30px;
   margin-bottom: 50px;
   padding: 10px;
-  border: 4px solid #66fcf1;
+  border: 4px solid #EBEBEB;
   border-radius: 10px;
   width: 60vw;
   & > input {
@@ -66,13 +71,13 @@ const Button = styled.button`
   font-weight: bold;
   color: #EBEBEB;
   background-color: transparent;
-  border: 2px solid #45a29e;
+  border: 2px solid #A594F9;
   border-radius: 10px;
   padding: 6px;
   font-size: calc(10px + 2vmin);
   &:hover{
     color: #EBEBEB;
-    background-color: #45a29e;
+    background-color: #A594F9;
     cursor: pointer;
   }
   `

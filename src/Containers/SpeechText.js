@@ -31,6 +31,7 @@ export default class SpeechText extends React.Component {
   }
   
   render(){
+    console.log(this.state.voices)
     return(
       <Container>
           {/* <SpeechInput text={this.state.text} renderChange={this.renderChange} renderInputLang={this.renderInputLang}/>

@@ -80,7 +80,7 @@ class SpeechOutput extends React.Component {
 
   render() {
     return (
-      <div class="SpeechOutput">
+      <div className="SpeechOutput">
          <Form onSubmit={this.renderVoice}>
           <Form.Row>
 

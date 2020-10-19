@@ -143,6 +143,7 @@ class SpeechInput extends React.Component {
           {!this.state.speak ? <svg style={{cursor: "pointer"}} onClick={this.renderSpeech} viewBox="0 0 15 15" fill="none" xmlns="http://www.w3.org/2000/svg" width="28" height="28"><path d="M5 2.5a2.5 2.5 0 015 0v4a2.5 2.5 0 01-5 0v-4z" fill="currentColor"></path><path d="M2 4v2.5a5.5 5.5 0 005 5.478V14H5v1h5v-1H8v-2.022A5.5 5.5 0 0013 6.5V4h-1v2.5a4.5 4.5 0 01-9 0V4H2z" fill="currentColor"></path></svg> : <svg style={{cursor: "pointer"}} onClick={this.renderSpeech} viewBox="0 0 15 15" fill="none" xmlns="http://www.w3.org/2000/svg" width="28" height="28"><path d="M11.5 3.5h-8v8h8v-8z" stroke="currentColor"></path></svg>}
 
           <Button variant="primary" type="submit">Hear Out Loud</Button>
+  
         </form>
       </div>
     );
