@@ -28,9 +28,18 @@
   border-radius: 25px;
 }
 
+@media(max-width: 768px) {
+  .SpeechOutput {
+    width: 80vw;
+  }
+  .SpeechInput {
+    width: 80vw;
+  }
+} 
+
 .MessageForm{
   margin-right: 10%;
-  margin-right: 10%;
+  margin-left: 10%;
   width: 45%;
   color: grey;
   background-color: white;
@@ -40,11 +49,10 @@
 }
 
 @media(max-width: 768px) {
-  .SpeechOutput {
+  .MessageForm {
     width: 80vw;
-  }
-  .SpeechInput {
-    width: 80vw;
+    margin-right: 5%;
+    margin-left: 5%;
   }
 } 
 

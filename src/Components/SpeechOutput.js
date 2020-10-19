@@ -8,15 +8,22 @@ class SpeechOutput extends React.Component {
     lang: 'en',
     voices: window.speechSynthesis.getVoices(),
   }
+
+  // componentDidMount = () => {
+  //   window.speechSynthesis.onvoiceschanged = () => {
+  //       this.setState({
+  //         voices: window.speechSynthesis.getVoices()
+  //       })
+  //     }
+  // }
     
   renderVoice = (e) => {
     e.preventDefault()
     let text = e.target.translateText.value
     let voiceName = e.target.voice.value.split(' ')[0]
-    let utterThis = new SpeechSynthesisUtterance()
-  
-    
+    let utterThis = new SpeechSynthesisUtterance()  
    let setVoice = this.state.voices.find(voice => voice.name === voiceName)
+
     utterThis.rate = this.state.voiceSpeed
     utterThis.text = text
     utterThis.voice = setVoice
@@ -30,12 +37,11 @@ class SpeechOutput extends React.Component {
   }
 
   renderChange = (e) => {
-     this.props.renderChange(e.target.value)
+    this.props.renderChange(e.target.value)
   }
 
   renderOptions = () => {
     let synth = window.speechSynthesis
-
     let voices = synth.getVoices()
     let index = 0
     return voices.map(voice => <option key={(index = parseInt(index) + 1)}> {voice.name + ' (' + voice.lang + ')'}</option>)  
@@ -60,13 +66,10 @@ class SpeechOutput extends React.Component {
   }
 
   translate = () => {
-    //do fetch here for translation
     let sourceLang = this.props.inputLang
     let sourceText = this.props.text
     let targetLang = this.state.lang
-    console.log(sourceLang)
-    console.log(sourceText)
-    console.log(targetLang)
+
     fetch("https://translate.googleapis.com/translate_a/single?client=gtx&sl=" + sourceLang + "&tl=" + targetLang + "&dt=t&q=" + encodeURI(sourceText))
     .then(resp=>resp.json())
     .then(data=> this.setState({
@@ -79,10 +82,10 @@ class SpeechOutput extends React.Component {
     return (
       <div class="SpeechOutput">
          <Form onSubmit={this.renderVoice}>
-           <Form.Row>
-            
-             <Form.Group as={Col} controlId="language.ControlSelect1">
-            <Form.Label>Choose Language:</Form.Label>
+          <Form.Row>
+
+            <Form.Group as={Col} controlId="language.ControlSelect1">
+              <Form.Label>Choose Language:</Form.Label>
               <Form.Control as="select" name="language" onChange={this.selectLang}>
                 <option>English</option>
                 <option>French</option>
@@ -90,44 +93,39 @@ class SpeechOutput extends React.Component {
                 <option>German</option>
                 <option>Italian</option>
               </Form.Control>
-          </Form.Group>
+            </Form.Group>
              
-            
-              <Form.Group as={Col} controlId="voice.ControlSelect1">
-            <Form.Label>Choose Voice:</Form.Label>
-            <Form.Control as="select" name="voice">
-              {this.renderOptions()}
-            </Form.Control>
-          </Form.Group>
+            <Form.Group as={Col} controlId="voice.ControlSelect1">
+              <Form.Label>Choose Voice:</Form.Label>
+              <Form.Control as="select" name="voice">
+                {this.renderOptions()}
+              </Form.Control>
+            </Form.Group>
 
-          <Form.Group as={Col} controlId="speed.ControlInput1">
-            <Form.Label>Choose Speed:</Form.Label>
-            <Form.Control type="number" name="voiceSpeed" min="0.5" max="2" step="0.1" value={this.state.voiceSpeed} onChange={this.renderSpeed}></Form.Control>
-          </Form.Group>
-
-              
-           </Form.Row>
+            <Form.Group as={Col} controlId="speed.ControlInput1">
+              <Form.Label>Choose Speed:</Form.Label>
+              <Form.Control type="number" name="voiceSpeed" min="0.5" max="2" step="0.1" value={this.state.voiceSpeed} onChange={this.renderSpeed}></Form.Control>
+            </Form.Group>    
+          </Form.Row>
 
           <Form.Group controlId="text.ControlInput2">
               <Form.Control readOnly as="textarea" rows="8" placeholder="Translated text will appear here :)" name="translateText" value={this.state.returnValue}/>
           </Form.Group>
 
           <Form.Row>
-              <Form.Group controlId="button1">  
-                    <Button onClick={this.translate}type="button" name="translate" variant="success" size="">Translate</Button>
-                  </Form.Group> 
-                <Form.Group controlId="button2">
-                <Button variant="primary" type="submit">
-                  Hear Out Loud
-                </Button>
-              </Form.Group>
-              <Form.Group controlId="button3">
-                <Button variant="info" type="button">
-                  Save
-                </Button>
-              </Form.Group>
-          </Form.Row>
-                        
+            <Form.Group controlId="button1">  
+                <Button onClick={this.translate}type="button" name="translate" variant="success" size="">Translate</Button>
+            </Form.Group>
+
+            <Form.Group controlId="button2">
+              <Button variant="primary" type="submit">Hear Out Loud</Button>
+            </Form.Group>
+
+            <Form.Group controlId="button3">
+              <Button variant="info" type="button">Save</Button>
+            </Form.Group>
+
+          </Form.Row>                     
         </Form>
       </div>
     )

@@ -32,6 +32,7 @@ function MessagesSaved(props){
     </Container>
   )
 }
+
 export default MessagesSaved
 
 const Container = styled.div`
@@ -42,5 +43,8 @@ const Container = styled.div`
   font-size: calc(8px + 2vmin);
   display: flex;
   flex-direction: column;
+@media (max-width: 768px) {
+  flex-direction: column;
+  width: 30vh;
+}
 `
-  
