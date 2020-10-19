@@ -69,7 +69,7 @@ const Top = styled.div`
   display: flex;
   a.home{
     /* potential colors 874876, d5cbe6, 443e86, d2869c */
-    color: #d2869c;
+    color: #A594F9;
     font-size: 50px;
     font-family: 'oraqleScript';
     text-decoration: none;

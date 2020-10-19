@@ -65,7 +65,7 @@ const Img = styled.img`
   max-height: 30vh;
   max-width: 30vw;
   border-radius: 50%;
-  box-shadow: 0px 0px 30px #d2869c;
+  box-shadow: 0px 0px 30px #A594F9;
   `
 
 const Username = styled.h2`
@@ -93,18 +93,26 @@ const Form = styled.form`
   & label {
     display: inline-flex;
     background-color: transparent;
-    border: 2px solid #870033;
+    border: 2px solid #A594F9;
     border-radius: 10px;
+    font-weight: bold;
     padding: 6px;
     color: white;
     cursor: pointer;
+    &:hover {
+      color: #A594F9;
+    }
   }
   `
 
 const Button = styled.button`
   background-color: transparent;
-  border: 2px solid #870033;
+  border: 2px solid #A594F9;
   border-radius: 10px;
+  font-weight: bold;
   padding: 6px;
   color: white;
+  &:hover {
+    color: #A594F9;
+  }
   `

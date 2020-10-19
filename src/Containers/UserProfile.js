@@ -40,7 +40,7 @@ const InnerContainer = styled.div`
   justify-content: center;
   width: 70vw;
   background-color: #303030;
-  box-shadow: 0px 0px 30px #d2869c;
+  box-shadow: 0px 0px 30px #A594F9;
   border-radius: 10px;
   padding: 20px;
   @media (min-width: 768px) {

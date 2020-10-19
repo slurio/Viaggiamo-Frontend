@@ -62,7 +62,7 @@ function App() {
             <Navbar logout={logout} />
             <Route path="/" exact render={() => <UserProfile updateProfile={updateProfile} currentUser={currentUser}/>} />
             <Route path="/speech" render={() => <SpeechText />} />
-            <Route path="/messages" render={() => <Message />} />
+            <Route path="/messages" render={() => <Message categories={currentUser.categories}/>} />
             <Route path="/lessons" render={() => <Lessons />} />
           </>
       }
