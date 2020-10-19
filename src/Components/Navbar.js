@@ -82,6 +82,7 @@ const Top = styled.div`
 
 const Bottom = styled.div`
   display: flex;
+  font-weight: bold;
   a {
     color: #F4F4F9;
     text-decoration: none;

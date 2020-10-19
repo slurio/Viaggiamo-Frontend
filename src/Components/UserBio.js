@@ -33,6 +33,7 @@ function UserBio(props){
       //   setCurrentImage(srcData)
       // }
       // fileReader.readAsDataURL(imageFile);
+      // add
       setCurrentImage(e.target.files[0])
     }
   }

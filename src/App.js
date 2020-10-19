@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import { Route } from 'react-router-dom';
 import 'bootstrap/dist/css/bootstrap.min.css'
 import './App.css';
@@ -11,6 +11,11 @@ import Navbar from './Components/Navbar'
 
 function App() {
   let [currentUser, setCurrentUser] = useState('')
+  let [voices, setVoices] = useState([])
+
+  useEffect(()=> {
+    setVoices('voices')
+  }, [])
 
   function login(username) {
     const options = {
