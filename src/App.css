@@ -15,7 +15,7 @@
 
 .SpeechOutput{
   width: 45%;
-  color: grey;
+  color: #3D3C53;
   background-color: white;
   padding: 25px;
   border-radius: 25px;
@@ -23,10 +23,81 @@
 
 .SpeechInput{
   width: 45%;
-  color: grey;
+  color: #3D3C53;
   background-color: white;
   padding: 25px;
   border-radius: 25px;
+}
+
+.hearOutLoudButton{
+  margin-left: 20px;
+  font-weight: bold;
+  color: #A594F9;
+  background-color: transparent;
+  border: 2px solid #A594F9;
+  border-radius: 10px;
+  padding: 6px;
+  font-size: calc(4px + 2vmin);
+}
+.hearOutLoudButton:hover{
+  color: white;
+  background-color: #A594F9;
+  border: 2px solid #A594F9;
+  cursor: pointer;
+}
+
+.translateButton{
+  margin-left: 20px;
+  font-weight: bold;
+  color: white;
+  background-color: #A594F9;
+  border: 2px solid #A594F9;
+  border-radius: 10px;
+  padding: 6px;
+  font-size: calc(4px + 2vmin);
+}
+
+.translateButton:hover{
+  color: #A594F9;
+  background-color:transparent;
+  border: 2px solid #A594F9;
+  cursor: pointer;
+}
+
+.SaveButton{
+  margin-left: 20px;
+  font-weight: bold;
+  color: #A594F9;
+  background-color: transparent;
+  border: 2px solid #A594F9;
+  border-radius: 10px;
+  padding: 6px;
+  font-size: calc(4px + 2vmin);
+}
+
+.SaveButton:hover{
+  color: white;
+  background-color: #A594F9;
+  border: 2px solid #A594F9;
+  cursor: pointer;
+}
+
+.MessageForm .hearOutLoudButton{
+  margin-left: 20px;
+  font-weight: bold;
+  color: white;
+  background-color: #A594F9;
+  border: 2px solid #A594F9;
+  border-radius: 10px;
+  padding: 6px;
+  font-size: calc(4px + 2vmin);
+}
+
+.MessageForm .hearOutLoudButton:hover{
+  color: #A594F9;
+  background-color:transparent;
+  border: 2px solid #A594F9;
+  cursor: pointer;
 }
 
 @media(max-width: 768px) {
@@ -42,7 +113,7 @@
   margin-right: 10%;
   margin-left: 10%;
   width: 45%;
-  color: grey;
+  color: #3D3C53;
   background-color: white;
   padding: 25px;
   border-radius: 25px;
@@ -57,6 +128,20 @@
   }
 } 
 
-.App-link {
-  color: #61dafb;
+.ModalSaveButton {
+  margin-left: 20px;
+  font-weight: bold;
+  color: white;
+  background-color: #A594F9;
+  border: 2px solid #A594F9;
+  border-radius: 10px;
+  padding: 6px;
+  font-size: calc(4px + 2vmin);
+}
+
+.ModalSaveButton:hover{
+  color: #A594F9;
+  background-color:transparent;
+  border: 2px solid #A594F9;
+  cursor: pointer;
 }

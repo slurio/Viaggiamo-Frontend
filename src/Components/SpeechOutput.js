@@ -1,6 +1,6 @@
 import React from "react";
-import { NavLink } from "react-router-dom"
-import { Form, Button, Col} from "react-bootstrap";
+import { NavLink, withRouter, Redirect} from "react-router-dom"
+import { Form, Col, Modal} from "react-bootstrap";
 
 class SpeechOutput extends React.Component {
   state={
@@ -11,16 +11,7 @@ class SpeechOutput extends React.Component {
     saveForm: false,
     description: "",
     newCategory: "",
-    // voices: window.speechSynthesis.getVoices(),
   }
-
-  // componentDidMount = () => {
-  //   window.speechSynthesis.onvoiceschanged = () => {
-  //       this.setState({
-  //         voices: window.speechSynthesis.getVoices()
-  //       })
-  //     }
-  // }
     
   renderVoice = (e) => {
     e.preventDefault()
@@ -126,10 +117,12 @@ class SpeechOutput extends React.Component {
       language: language,
       voice: voice,
       content: text,
-      // category: category
     }
 
     this.props.saveMessage(category, message)
+
+    console.log(this.props.history)
+    this.props.history.push("/messages")
   }
 
   render() {
@@ -168,15 +161,15 @@ class SpeechOutput extends React.Component {
 
           <Form.Row>
             <Form.Group controlId="button1">  
-                <Button onClick={this.translate}type="button" name="translate" variant="success" size="">Translate</Button>
+                <button className="translateButton" onClick={this.translate}type="button" name="translate" variant="success" size="">Translate</button>
             </Form.Group>
 
             <Form.Group controlId="button2">
-              <Button variant="primary" type="submit">Hear Out Loud</Button>
+              <button className="hearOutLoudButton" type="submit">Hear Out Loud</button>
             </Form.Group>
 
             <Form.Group controlId="button3">
-              <Button onClick={this.showSaveForm} variant="info" type="button">Save</Button>
+              <button className="SaveButton" onClick={this.showSaveForm} variant="info" type="button">Save</button>
             </Form.Group>
 
           </Form.Row>                     
@@ -184,22 +177,45 @@ class SpeechOutput extends React.Component {
 
         {this.state.saveForm ?
         <>
-          <h1>form</h1>
-          <form onSubmit={this.saveMessage}>
-            <label>Category</label>
-            <select name="existingCategory">
-              {this.renderCategories()}
-            </select>
+          <Modal show={this.state.saveForm}
+            {...this.props}
+            centered
+          >
+            <Form onSubmit={this.saveMessage}>
+              <Modal.Header closeButton>
+                <Modal.Title>Save Message</Modal.Title>
+              </Modal.Header>
 
-            <label>Create Category</label>
-            <input name="newCategory" onChange={this.renderSaveForm} type="text" value={this.state.newCategory}/>
+              <Modal.Body>
+                <Form.Row>
+                  <Form.Group>
+                    <Form.Label>Existing Category</Form.Label>
+                    <Form.Control as="select" name="existingCategory">
+                      {this.renderCategories()}
+                    </Form.Control>
+                  </Form.Group>
 
-            <label>Description</label>
-            <input name="description" onChange={this.renderSaveForm} type="text" value={this.state.description}/>
-            <NavLink to={"/messages"}>
-              <input type="submit" value="submit"/>
-            </NavLink>
-          </form>
+                  <Form.Group> <span style={{marginLeft: "12px"}}>or</span></Form.Group>
+
+                  <Form.Group>
+                    <Form.Label style={{marginLeft: "10px"}}>Create Category</Form.Label>
+                    <Form.Control style={{marginLeft: "10px"}} type="text" name="newCategory" onChange={this.renderSaveForm} value={this.state.newCategory}/>
+                  </Form.Group>
+                
+                </Form.Row>
+              
+                <Form.Label>Description</Form.Label>
+                <Form.Control name="description" onChange={this.renderSaveForm} type="text" value={this.state.description}/>
+              </Modal.Body>
+              
+
+              <Modal.Footer>
+                <input className="ModalSaveButton" type="submit" value="submit"/>
+              </Modal.Footer>
+
+            </Form>
+          </Modal>
+
         </>
    
          : null}
@@ -208,4 +224,4 @@ class SpeechOutput extends React.Component {
   }
 }
 
-export default SpeechOutput;
+export default withRouter(SpeechOutput);

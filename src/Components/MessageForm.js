@@ -1,5 +1,5 @@
 import React from 'react'
-import { Form, Col, Button } from 'react-bootstrap'
+import { Form, Col } from 'react-bootstrap'
 
 class MessageForm extends React.Component {
   state = {
@@ -77,8 +77,8 @@ class MessageForm extends React.Component {
             <Form.Control as="textarea" rows="8" name="text" value={this.props.content} onChange={this.renderTextChange}/>
           </Form.Group>
                       
-          <Button variant="primary" type="submit">Hear Out Loud</Button>
-          <Button variant="success" type="button" onClick={this.saveMessage}>Save</Button>
+          <button className="hearOutLoudButton" type="submit">Hear Out Loud</button>
+          <button className="SaveButton" type="button" onClick={this.saveMessage}>Save</button>
         </form>
       </div>    
     )

@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react'
-import { Route } from 'react-router-dom';
+import { Route, Redirect, withRouter } from 'react-router-dom';
 import 'bootstrap/dist/css/bootstrap.min.css'
 import './App.css';
 import SpeechText from './Containers/SpeechText'
@@ -86,13 +86,22 @@ function App() {
           let index = updatedCategories.indexOf(oldCategory)
           updatedCategories[index] = category
           setCategories(updatedCategories)
+          console.log("if title existed", updatedCategories)  
         }else {
           let updatedCategories = [category,...currentUser.categories]
           setCategories(updatedCategories)
-        }    
-        
+          console.log("if title does not exist", updatedCategories)  
+        }
+        // console.log(this.props.history)
+        // this.props.history.push("/messages")
+        // renderRedirect()
       })
   }
+
+  // const renderRedirect = () => {
+  //   console.log('redirect')
+  //   return <Redirect to="/messages" />
+  // }
 
   return (
     <div className="App">
@@ -110,4 +119,4 @@ function App() {
   );
 }
 
-export default App;
+export default  withRouter(App);
