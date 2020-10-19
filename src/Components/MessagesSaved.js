@@ -10,6 +10,7 @@ function MessagesSaved(props){
   }
 
   const renderMessageCards = () => {
+    console.log(props.categories)
     if(props.categorySelected === ""){
       return props.categories[0].messages.map(message=> <MessageCard key={message.id} message={message} renderMessage={props.renderMessage}/>)
     } else {

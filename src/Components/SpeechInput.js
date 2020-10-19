@@ -1,5 +1,5 @@
 import React from 'react'
-import { Form, Col, Button } from 'react-bootstrap'
+import { Form, Col } from 'react-bootstrap'
 
 const SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition
 const recognition = new SpeechRecognition()
@@ -7,18 +7,9 @@ const recognition = new SpeechRecognition()
 class SpeechInput extends React.Component {    
   state = {
       voiceSpeed: 0.8,
-      voices: window.speechSynthesis.getVoices(),
       speak: false,
       language: ''
     }
-
-  // componentDidMount = () => {
-  //   window.speechSynthesis.onvoiceschanged = () => {
-  //       this.setState({
-  //         voices: window.speechSynthesis.getVoices()
-  //       })
-  //     }
-  // }
   
   renderSpeech = (e) => {
     e.preventDefault()
@@ -78,8 +69,7 @@ class SpeechInput extends React.Component {
     let text = e.target.text.value
     let voiceName = e.target.voice.value.split(' ')[0]
     let utterThis = new SpeechSynthesisUtterance()
-    //  let setVoice = this.props.voices.find(voice => voice.name === voiceName)
-    let setVoice = this.state.voices.find(voice => voice.name === voiceName)
+    let setVoice = this.props.voices.find(voice => voice.name === voiceName)
     
     utterThis.rate = this.state.voiceSpeed
     utterThis.text = text
@@ -142,7 +132,7 @@ class SpeechInput extends React.Component {
 
           {!this.state.speak ? <svg style={{cursor: "pointer"}} onClick={this.renderSpeech} viewBox="0 0 15 15" fill="none" xmlns="http://www.w3.org/2000/svg" width="28" height="28"><path d="M5 2.5a2.5 2.5 0 015 0v4a2.5 2.5 0 01-5 0v-4z" fill="currentColor"></path><path d="M2 4v2.5a5.5 5.5 0 005 5.478V14H5v1h5v-1H8v-2.022A5.5 5.5 0 0013 6.5V4h-1v2.5a4.5 4.5 0 01-9 0V4H2z" fill="currentColor"></path></svg> : <svg style={{cursor: "pointer"}} onClick={this.renderSpeech} viewBox="0 0 15 15" fill="none" xmlns="http://www.w3.org/2000/svg" width="28" height="28"><path d="M11.5 3.5h-8v8h8v-8z" stroke="currentColor"></path></svg>}
 
-          <Button variant="primary" type="submit">Hear Out Loud</Button>
+          <button className="hearOutLoudButton" variant="primary" type="submit">Hear Out Loud</button>
   
         </form>
       </div>

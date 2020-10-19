@@ -65,7 +65,7 @@ export default class Message extends React.Component {
     return(
       <Container>
         <LeftBar>
-          <MessagesSaved updatedMessage={this.state.message} renderSelect={this.renderSelect} renderMessage={this.renderMessage} categories={this.state.categories} categorySelected={this.state.categorySelected}/>
+          <MessagesSaved updatedMessage={this.state.message} renderSelect={this.renderSelect} renderMessage={this.renderMessage} categories={this.props.categories} categorySelected={this.state.categorySelected}/>
         </LeftBar>
         <MessageForm saveMessage={this.saveMessage} renderTextChange={this.renderTextChange} message={this.state.message} content={this.state.messageContent}/>
       </Container>

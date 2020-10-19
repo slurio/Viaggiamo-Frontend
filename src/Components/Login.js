@@ -1,6 +1,5 @@
 import React from 'react'
 import styled from 'styled-components'
-import logo from '../images/logo1.png'
 import globe from '../images/worldlogo.png'
 import oraqleScript from '../fonts/OraqleScript/OraqleScript.woff';
 
@@ -50,13 +49,13 @@ const Img = styled.img`
 
 const Form = styled.form`
   font-weight: bold;
-  color: #EBEBEB;
+  color: #3D3C53;
   display: flex;
   flex-direction: column;
   margin-top: 30px;
   margin-bottom: 50px;
   padding: 10px;
-  background-color: #303030;
+  background-color: #EBEBEB;
   box-shadow: 0px 0px 30px #A594F9;
   border-radius: 10px;
   width: 60vw;
@@ -71,14 +70,15 @@ const Form = styled.form`
 const Button = styled.button`
   margin-top: 5px;
   font-weight: bold;
-  color: #EBEBEB;
+  color: #3D3C53;
   background-color: transparent;
-  border: 2px solid #A594F9;
+  border: 2px solid #3D3C53;
   border-radius: 10px;
   padding: 6px;
   font-size: calc(10px + 2vmin);
   &:hover{
-    color: #A594F9;
+    color: #3D3C53;
+    background-color: #A594F9;
     cursor: pointer;
   }
   `

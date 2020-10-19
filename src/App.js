@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react'
-import { Route } from 'react-router-dom';
+import { Route, Redirect, withRouter } from 'react-router-dom';
 import 'bootstrap/dist/css/bootstrap.min.css'
 import './App.css';
 import SpeechText from './Containers/SpeechText'
@@ -10,12 +10,15 @@ import Login from './Components/Login'
 import Navbar from './Components/Navbar'
 
 function App() {
-  let [currentUser, setCurrentUser] = useState('s')
-  let [voices, setVoices] = useState([])
+  let [currentUser, setCurrentUser] = useState('')
+  let [categories, setCategories] = useState('')
+  let [voices, setVoices] = useState('')
 
-  useEffect(()=> {
-    setVoices('voices')
-  }, [])
+  useEffect(() => {
+    window.speechSynthesis.onvoiceschanged = () => {
+      return setVoices(window.speechSynthesis.getVoices()) 
+    }
+  },[])
 
   function login(username) {
     const options = {
@@ -28,7 +31,10 @@ function App() {
     }
     fetch('http://localhost:3001/users', options)
       .then(resp=>resp.json())
-      .then(data=> setCurrentUser(data))
+      .then(data=> {
+        setCurrentUser(data)
+        setCategories(data.categories)
+      })
   }
   
   function updateProfile(bio, img) {
@@ -53,6 +59,44 @@ function App() {
     setCurrentUser('')
   }
 
+  function saveMessage(category, message) {
+
+    const options = {
+      method: "POST",
+      headers: {
+        "content-type": "application/json",
+        "accept": "application/json"
+      },
+      body: JSON.stringify({message, category, currentUser})
+    }
+
+    fetch('http://localhost:3001/categories/', options)
+      .then(resp=>resp.json())
+      .then(category=> {
+        
+        if(categories.find(cat => category.title === cat.title )){
+          let updatedCategories = [...currentUser.categories]
+          let oldCategory = updatedCategories.find(cat => category.title === cat.title )
+          let index = updatedCategories.indexOf(oldCategory)
+          updatedCategories[index] = category
+          setCategories(updatedCategories)
+          console.log("if title existed", updatedCategories)  
+        }else {
+          let updatedCategories = [category,...currentUser.categories]
+          setCategories(updatedCategories)
+          console.log("if title does not exist", updatedCategories)  
+        }
+        // console.log(this.props.history)
+        // this.props.history.push("/messages")
+        // renderRedirect()
+      })
+  }
+
+  // const renderRedirect = () => {
+  //   console.log('redirect')
+  //   return <Redirect to="/messages" />
+  // }
+
   return (
     <div className="App">
       {currentUser === '' 
@@ -60,8 +104,8 @@ function App() {
         : <>
             <Navbar logout={logout} />
             <Route path="/" exact render={() => <UserProfile updateProfile={updateProfile} currentUser={currentUser}/>} />
-            <Route path="/speech" render={() => <SpeechText />} />
-            <Route path="/messages" render={() => <Message categories={currentUser.categories}/>} />
+            <Route path="/speech" render={() => <SpeechText saveMessage={saveMessage} voices={voices} categories={currentUser.categories}/>}  />
+            <Route path="/messages" render={() => <Message categories={categories} voices={voices}/> } />
             <Route path="/lessons" render={() => <Lessons />} />
           </>
       }
@@ -69,4 +113,4 @@ function App() {
   );
 }
 
-export default App;
+export default  withRouter(App);

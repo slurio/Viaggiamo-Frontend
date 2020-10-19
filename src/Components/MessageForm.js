@@ -1,5 +1,5 @@
 import React from 'react'
-import { Form, Col, Button } from 'react-bootstrap'
+import { Form, Col } from 'react-bootstrap'
 
 class MessageForm extends React.Component {
   state = {
@@ -44,11 +44,27 @@ class MessageForm extends React.Component {
     this.props.saveMessage()
   }
 
+  renderLanguage = () => {
+ 
+    if(this.props.message.language === "en"){
+      return 'English'
+    } else if(this.props.message.language === "fr"){
+      return 'French'
+    }else if(this.props.message.language === "es"){
+      return 'Spanish'
+    }else if(this.props.message.language === "de"){
+      return 'German'
+    }else if(this.props.message.language === "it"){
+      return 'Italian'
+    }
+    
+  }
+
   render() {
     return(
       <div className="MessageForm">
         <p style={{fontSize: '28px'}}>Description: {this.props.message ? <span>{this.props.message.description}</span> : null}</p>
-        <p style={{fontSize: '22px'}}>Language: {this.props.message ? <span>{this.props.message.language}</span> : null}</p>
+        <p style={{fontSize: '22px'}}>Language: {this.props.message ? <span>{this.renderLanguage()}</span> : null}</p>
         <form onSubmit={this.renderVoice}>   
           <Form.Row>
             <Form.Group as={Col} controlId="speed.ControlInput1">
@@ -61,8 +77,8 @@ class MessageForm extends React.Component {
             <Form.Control as="textarea" rows="8" name="text" value={this.props.content} onChange={this.renderTextChange}/>
           </Form.Group>
                       
-          <Button variant="primary" type="submit">Hear Out Loud</Button>
-          <Button variant="success" type="button" onClick={this.saveMessage}>Save</Button>
+          <button className="hearOutLoudButton" type="submit">Hear Out Loud</button>
+          <button className="SaveButton" type="button" onClick={this.saveMessage}>Save</button>
         </form>
       </div>    
     )
