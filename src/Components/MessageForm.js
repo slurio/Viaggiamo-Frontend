@@ -6,7 +6,7 @@ class MessageForm extends React.Component {
   state = {
     voiceSpeed: 0.8,
     speak: false,
-    voices: []
+    voices: window.speechSynthesis.getVoices()
   }
 
   componentDidMount = () => {
@@ -40,10 +40,16 @@ class MessageForm extends React.Component {
     this.props.renderTextChange(e.target.value)
   }
 
+  saveMessage = () => {
+    this.props.saveMessage()
+  }
+
   render() {
+    console.log(this.state.voices)
     return(
       <div className="MessageForm">
-        {this.props.message ? <p>{this.props.message.language}</p>: null}
+        <p>Description: {this.props.message ? <span>{this.props.message.description}</span> : null}</p>
+        <p>Language: {this.props.message ? <span>{this.props.message.language}</span> : null}</p>
         <form onSubmit={this.renderVoice}>   
             <Form.Row>
               <Form.Group as={Col} controlId="speed.ControlInput1">
@@ -60,6 +66,9 @@ class MessageForm extends React.Component {
                                   
             <Button variant="primary" type="submit">
                   Hear Out Loud
+            </Button>
+            <Button variant="success" type="button" onClick={this.saveMessage}>
+                  Save
             </Button>
           </form>
       </div>    

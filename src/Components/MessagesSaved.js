@@ -3,6 +3,7 @@ import styled from 'styled-components'
 import MessageCard from './MessageCard'
 
 function MessagesSaved(props){
+
   const renderOptions = () => {
     let index = 0
     return props.categories.map(category => <option key={index += 1}>{category.title}</option>)

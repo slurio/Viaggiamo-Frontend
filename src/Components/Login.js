@@ -1,6 +1,8 @@
 import React from 'react'
 import styled from 'styled-components'
 import logo from '../images/logo1.png'
+import globe from '../images/globe-icon.png'
+
 
 function Login(props){ 
   function login(e){
@@ -9,7 +11,8 @@ function Login(props){
   }
   return(
     <Container>
-      <Img src={logo} alt="" />
+      {/* <Img src={logo} alt="" /> */}
+      <img style={{maxWidth: "35vw", maxHeight: "35vh", marginLeft: "auto", marginRight: "auto" }} src={globe} alt="" />
       <Form onSubmit={login}>
         <label>Username: </label>
         <input type="text" name="user"></input>
@@ -40,7 +43,7 @@ const Form = styled.form`
   margin-top: 30px;
   margin-bottom: 50px;
   padding: 10px;
-  border: 4px solid #d2869c;
+  border: 4px solid #A3BEE0;
   border-radius: 10px;
   width: 60vw;
   & > input {
@@ -53,14 +56,14 @@ const Form = styled.form`
 
 const Button = styled.button`
   margin-top: 5px;
-  color: white;
+  color: #EBEBEB;
   background-color: transparent;
-  border: 2px solid #870033;
+  border: 2px solid #A3BEE0;
   border-radius: 10px;
   padding: 6px;
   font-size: calc(10px + 2vmin);
   &:hover{
-    background-color: #870033;
+    background-color: #A3BEE0;
     cursor: pointer;
   }
   `

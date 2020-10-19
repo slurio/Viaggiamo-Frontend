@@ -8,7 +8,7 @@ class SpeechInput extends React.Component {
     
     state = {
         voiceSpeed: 0.8,
-        voices: [],
+        voices: window.speechSynthesis.getVoices(),
         speak: false
       }
     
@@ -78,7 +78,9 @@ class SpeechInput extends React.Component {
         let voiceName = e.target.voice.value.split(' ')[0]
         let utterThis = new SpeechSynthesisUtterance()
         
-       let setVoice = this.props.voices.find(voice => voice.name === voiceName)
+      //  let setVoice = this.props.voices.find(voice => voice.name === voiceName)
+      let setVoice = this.state.voices.find(voice => voice.name === voiceName)
+       
         utterThis.rate = this.state.voiceSpeed
         utterThis.text = text
         utterThis.voice = setVoice

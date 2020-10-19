@@ -5,7 +5,8 @@ class SpeechOutput extends React.Component {
   state={
     returnValue: '',
     voiceSpeed: 0.8,
-    lang: 'en'
+    lang: 'en',
+    voices: window.speechSynthesis.getVoices(),
   }
     
   renderVoice = (e) => {
@@ -15,7 +16,7 @@ class SpeechOutput extends React.Component {
     let utterThis = new SpeechSynthesisUtterance()
   
     
-   let setVoice = this.props.voices.find(voice => voice.name === voiceName)
+   let setVoice = this.state.voices.find(voice => voice.name === voiceName)
     utterThis.rate = this.state.voiceSpeed
     utterThis.text = text
     utterThis.voice = setVoice

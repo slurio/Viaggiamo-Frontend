@@ -6,6 +6,7 @@ import styled from 'styled-components'
 export default class Message extends React.Component {
 
   state = {
+    categories: this.props.categories,
     categorySelected: "",
     message: "",
     messageContent: ""
@@ -13,7 +14,7 @@ export default class Message extends React.Component {
 
   renderSelect = (category) => {
     this.setState({
-      categorySelected: category,
+      categorySelected: category
     })
   }
 
@@ -30,11 +31,36 @@ export default class Message extends React.Component {
     })
   }
 
+  saveMessage = () => {
+      const options = {
+        method: "PATCH",
+        headers: {
+          "content-type": "application/json",
+          "accept": "application/json"
+        },
+        body: JSON.stringify({content: this.state.messageContent})
+      }
+      fetch('http://localhost:3001/messages/' + this.state.message.id, options)
+        .then(resp=>resp.json())
+        .then(message=> {
+          let categories = this.state.categories  
+          let messageCategory = message.category.title
+          let selectedCategory = categories.find(category => messageCategory === category.title )
+          let oldMessage = selectedCategory.messages.find(el => el.id === message.id)
+          let index = selectedCategory.messages.indexOf(oldMessage)
+          selectedCategory.messages[index] = message
+        this.setState({
+          categories: categories,
+          message: message,
+          messageContent: message.content
+        })}) 
+  }
+
   render() {
     return(
       <Container>
-        <MessagesSaved renderSelect={this.renderSelect} renderMessage={this.renderMessage} categories={this.props.categories} categorySelected={this.state.categorySelected}/>
-        <MessageForm renderTextChange={this.renderTextChange} message={this.state.message} content={this.state.messageContent}/>
+        <MessagesSaved updatedMessage={this.state.message} renderSelect={this.renderSelect} renderMessage={this.renderMessage} categories={this.state.categories} categorySelected={this.state.categorySelected}/>
+        <MessageForm saveMessage={this.saveMessage} renderTextChange={this.renderTextChange} message={this.state.message} content={this.state.messageContent}/>
       </Container>
     )
   }
