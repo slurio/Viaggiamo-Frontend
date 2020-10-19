@@ -10,7 +10,7 @@ import Login from './Components/Login'
 import Navbar from './Components/Navbar'
 
 function App() {
-  let [currentUser, setCurrentUser] = useState('')
+  let [currentUser, setCurrentUser] = useState('s')
   let [voices, setVoices] = useState([])
 
   useEffect(()=> {
@@ -32,27 +32,21 @@ function App() {
   }
   
   function updateProfile(bio, img) {
-
-    console.log('img', img)
-
-    // can't figure out how to upload an image.
-    // const formData = new FormData
-    // formData.append('file', img)
-
-    // console.log('formdata', formData)
+    fetch(`http://localhost:3001/users/${currentUser.id}`, {
+      method: "PATCH",
+      headers: { "accept": "application/json" },
+      body: img
+    })
 
     const options = {
       method: "PATCH",
-      headers: {
+      headers: { 
         "content-type": "application/json",
         "accept": "application/json"
       },
-      body: JSON.stringify({img})
+      body: JSON.stringify({bio})
     }
-    fetch(`http://localhost:3001/users/${currentUser.id}`, options)
-      .then(resp=>resp.json())
-      .then(data=> setCurrentUser(data))
-
+    fetch(`http://localhost:3001/users/${currentUser.id}`, options)    
   }
 
   function logout() {

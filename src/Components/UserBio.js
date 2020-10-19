@@ -1,20 +1,22 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import styled from 'styled-components'
 
 function UserBio(props){
   let [editBtn, setEditBtn] = useState('Edit Profile')
   let [currentBio, setCurrentBio] = useState(props.currentUser.bio)
-  let [currentImage, setCurrentImage] = useState(props.currentUser.img)
+  let [oldImg, setOldImg] = useState("https://www.americanaircraftsales.com/wp-content/uploads/2016/09/no-profile-img.jpg")
+  let [newImg, setNewImg] = useState("")
+
+  useEffect(() => {
+    if(props.currentUser.avatar_url){setOldImg(props.currentUser.avatar_url)}
+  }, [props.currentUser.avatar_url])
 
   function updateProfile() {
     if(editBtn === 'Update'){
       setEditBtn('Edit Profile')
-
-      const formData = new FormData
-      formData.append('file', currentImage)
-
-      console.log(formData)
-      // props.updateProfile(currentBio, currentImage)
+      const formData = new FormData()
+      formData.append('file', newImg)
+      props.updateProfile(currentBio, formData)
     }else{
       setEditBtn('Update')
     }
@@ -26,29 +28,22 @@ function UserBio(props){
 
   function updateImage(e) {
     if(e.target.files[0]) {
-      // var imageFile = e.target.files[0];
-      // var fileReader = new FileReader();
-      // fileReader.onload = function(fileLoadedEvent) {
-      //   var srcData = fileLoadedEvent.target.result;
-      //   setCurrentImage(srcData)
-      // }
-      // fileReader.readAsDataURL(imageFile);
-      // add
-      setCurrentImage(e.target.files[0])
+      setNewImg(e.target.files[0])
+      setOldImg(URL.createObjectURL(e.target.files[0]))
     }
   }
 
   return(
     <>
       <Username>{props.currentUser.username}</Username>
-      <Img src="https://www.americanaircraftsales.com/wp-content/uploads/2016/09/no-profile-img.jpg" />
+      <Img src={oldImg} />
 
       {
         editBtn === 'Update'
         ? <>
           <Form>
             <label for="file-upload">Custom Upload</label>
-            <input id="file-upload" type="file" name="img" accept="image/*" onChange={updateImage} />
+            <input id="file-upload" type="file" name="avatar" accept="image/*" onChange={updateImage} />
             <textarea onChange={updateText} value={currentBio}></textarea>
           </Form>
           </>
@@ -64,7 +59,7 @@ export default UserBio
 
 const Img = styled.img`
   max-height: 30vh;
-  max-width: 30vw;
+  max-width: 30vh;
   border-radius: 50%;
   box-shadow: 0px 0px 30px #A594F9;
   `

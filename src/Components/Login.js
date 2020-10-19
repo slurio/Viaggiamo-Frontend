@@ -50,7 +50,7 @@ const Img = styled.img`
 
 const Form = styled.form`
   font-weight: bold;
-  color: #A594F9;
+  color: #EBEBEB;
   display: flex;
   flex-direction: column;
   margin-top: 30px;
@@ -79,7 +79,6 @@ const Button = styled.button`
   font-size: calc(10px + 2vmin);
   &:hover{
     color: #A594F9;
-    /* background-color: #A594F9; */
     cursor: pointer;
   }
   `

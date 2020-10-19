@@ -1,6 +1,5 @@
 import React from 'react'
 import styled from 'styled-components'
-import flagEN from '../images/english.png'
 import flagFR from '../images/french.png'
 import flagGE from '../images/german.png'
 import flagIT from '../images/italian.png'
@@ -21,11 +20,6 @@ function UserAchievements(props){
       <AchievementContainer>
         <AchievementImage src={flagGE} alt="" />
         German - 4/10
-      </AchievementContainer>
-      
-      <AchievementContainer>
-        <AchievementImage src={flagEN} alt="" />
-        English - 10/10
       </AchievementContainer>
       
       <AchievementContainer>
