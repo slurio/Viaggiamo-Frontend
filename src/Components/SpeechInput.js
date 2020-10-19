@@ -8,7 +8,8 @@ class SpeechInput extends React.Component {
   state = {
       voiceSpeed: 0.8,
       voices: window.speechSynthesis.getVoices(),
-      speak: false
+      speak: false,
+      language: ''
     }
 
   // componentDidMount = () => {
@@ -24,16 +25,16 @@ class SpeechInput extends React.Component {
 
     recognition.continuous = true;
     recognition.interimResults = false;
-    
-    if(e.target.parentNode.language.value === "English"){
-      recognition.lang = 'en-US'
-    } else if(e.target.parentNode.language.value === "French"){
+
+     if(this.state.language === "en"){
+      recognition.lang = 'en'
+    } else if(this.state.language === "fr"){
       recognition.lang = 'fr'
-    }else if(e.target.parentNode.language.value === "Spanish"){
+    }else if(this.state.language === "es"){
       recognition.lang = 'es'
-    }else if(e.target.parentNode.language.value === "German"){
+    }else if(this.state.language === "de"){
       recognition.lang = 'de'
-    }else if(e.target.parentNode.language.value === "Italian"){
+    }else if(this.state.language === "it"){
       recognition.lang = 'it'
     }
     
@@ -100,6 +101,9 @@ class SpeechInput extends React.Component {
       language = 'it'
     }
     this.props.renderInputLang(language)
+    this.setState({
+      language: language
+    })
   }
   
   render() {
@@ -136,7 +140,8 @@ class SpeechInput extends React.Component {
             <Form.Control as="textarea" rows="8" placeholder="Please enter or talk text here" name="text" value={this.props.text} onChange={this.renderChange}/>
           </Form.Group>
 
-          {!this.state.speak ? <Button type="button" name="start" variant="outline-success" onClick={this.renderSpeech}>Start</Button> :  <Button type="button" name="stop" variant="outline-danger" onClick={this.renderSpeech}>Stop</Button>}
+          {!this.state.speak ? <svg onClick={this.renderSpeech} viewBox="0 0 15 15" fill="none" xmlns="http://www.w3.org/2000/svg" width="28" height="28"><path d="M5 2.5a2.5 2.5 0 015 0v4a2.5 2.5 0 01-5 0v-4z" fill="currentColor"></path><path d="M2 4v2.5a5.5 5.5 0 005 5.478V14H5v1h5v-1H8v-2.022A5.5 5.5 0 0013 6.5V4h-1v2.5a4.5 4.5 0 01-9 0V4H2z" fill="currentColor"></path></svg> : <svg onClick={this.renderSpeech} viewBox="0 0 15 15" fill="none" xmlns="http://www.w3.org/2000/svg" width="28" height="28"><path d="M11.5 3.5h-8v8h8v-8z" stroke="currentColor"></path></svg>}
+
           <Button variant="primary" type="submit">Hear Out Loud</Button>
         </form>
       </div>
