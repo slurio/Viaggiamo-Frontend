@@ -113,14 +113,19 @@ class SpeechOutput extends React.Component {
           </Form.Group>
 
           <Form.Row>
-            <Form.Group controlId="button1">
+              <Form.Group controlId="button1">  
+                    <Button onClick={this.translate}type="button" name="translate" variant="success" size="">Translate</Button>
+                  </Form.Group> 
+                <Form.Group controlId="button2">
                 <Button variant="primary" type="submit">
                   Hear Out Loud
                 </Button>
               </Form.Group>
-              <Form.Group controlId="button2">  
-                <Button onClick={this.translate}type="button" name="translate" variant="success" size="">Translate</Button>
-              </Form.Group> 
+              <Form.Group controlId="button3">
+                <Button variant="info" type="button">
+                  Save
+                </Button>
+              </Form.Group>
           </Form.Row>
                         
         </Form>

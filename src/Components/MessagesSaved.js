@@ -24,7 +24,7 @@ function MessagesSaved(props){
 
   return(
     <Container>
-        <h1>MessagesSaved</h1>
+        <h3>Saved Messages</h3>
         <select name="categories" onChange={renderSelect}>
           {renderOptions()}
         </select>
@@ -35,5 +35,12 @@ function MessagesSaved(props){
 export default MessagesSaved
 
 const Container = styled.div`
+  width: 50vh; 
   height: 100vh;
-  `
+  background-color: white;
+  color: #3D3C53;
+  font-size: calc(8px + 2vmin);
+  display: flex;
+  flex-direction: column;
+`
+  
