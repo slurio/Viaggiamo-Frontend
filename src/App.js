@@ -28,9 +28,13 @@ function App() {
   
   function updateProfile(bio, img) {
 
+    console.log('img', img)
+
     // can't figure out how to upload an image.
     // const formData = new FormData
     // formData.append('file', img)
+
+    // console.log('formdata', formData)
 
     const options = {
       method: "PATCH",
@@ -38,7 +42,7 @@ function App() {
         "content-type": "application/json",
         "accept": "application/json"
       },
-      body: JSON.stringify({bio})
+      body: JSON.stringify({img})
     }
     fetch(`http://localhost:3001/users/${currentUser.id}`, options)
       .then(resp=>resp.json())

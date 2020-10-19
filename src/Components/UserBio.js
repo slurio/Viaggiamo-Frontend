@@ -9,7 +9,12 @@ function UserBio(props){
   function updateProfile() {
     if(editBtn === 'Update'){
       setEditBtn('Edit Profile')
-      props.updateProfile(currentBio, currentImage)
+
+      const formData = new FormData
+      formData.append('file', currentImage)
+
+      console.log(formData)
+      // props.updateProfile(currentBio, currentImage)
     }else{
       setEditBtn('Update')
     }
@@ -21,6 +26,13 @@ function UserBio(props){
 
   function updateImage(e) {
     if(e.target.files[0]) {
+      // var imageFile = e.target.files[0];
+      // var fileReader = new FileReader();
+      // fileReader.onload = function(fileLoadedEvent) {
+      //   var srcData = fileLoadedEvent.target.result;
+      //   setCurrentImage(srcData)
+      // }
+      // fileReader.readAsDataURL(imageFile);
       setCurrentImage(e.target.files[0])
     }
   }
@@ -87,9 +99,6 @@ const Form = styled.form`
     color: white;
     cursor: pointer;
   }
-  /* @media (max-width: 768px) {
-    width: 100%;
-  } */
   `
 
 const Button = styled.button`
