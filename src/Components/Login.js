@@ -25,6 +25,7 @@ const Container = styled.div`
   flex-direction: column;
   align-items: center;
   justify-content: center;
+  text-align: center;
   height: 100vh;
   `
 
@@ -40,7 +41,8 @@ const Form = styled.form`
   margin-top: 30px;
   margin-bottom: 50px;
   padding: 10px;
-  border: 4px solid #d2869c;
+  background-color: #303030;
+  box-shadow: 0px 0px 30px #d2869c;
   border-radius: 10px;
   width: 60vw;
   & > input {

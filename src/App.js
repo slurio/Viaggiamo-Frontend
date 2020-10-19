@@ -25,14 +25,38 @@ function App() {
       .then(resp=>resp.json())
       .then(data=> setCurrentUser(data))
   }
+  
+  function updateProfile(bio, img) {
+
+    // can't figure out how to upload an image.
+    // const formData = new FormData
+    // formData.append('file', img)
+
+    const options = {
+      method: "PATCH",
+      headers: {
+        "content-type": "application/json",
+        "accept": "application/json"
+      },
+      body: JSON.stringify({bio})
+    }
+    fetch(`http://localhost:3001/users/${currentUser.id}`, options)
+      .then(resp=>resp.json())
+      .then(data=> setCurrentUser(data))
+
+  }
+
+  function logout() {
+    setCurrentUser('')
+  }
 
   return (
     <div className="App">
       {currentUser === '' 
         ? <Route path="/" exact render={() => <Login login={login}/>} />
         : <>
-            <Navbar />
-            <Route path="/" exact render={() => <UserProfile currentUser={currentUser}/>} />
+            <Navbar logout={logout} />
+            <Route path="/" exact render={() => <UserProfile updateProfile={updateProfile} currentUser={currentUser}/>} />
             <Route path="/speech" render={() => <SpeechText />} />
             <Route path="/messages" render={() => <Message />} />
             <Route path="/lessons" render={() => <Lessons />} />

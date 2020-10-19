@@ -7,7 +7,7 @@ export default function UserProfile(props) {
     return(
       <Container>
         <InnerContainer>
-          <UserBio className="temp" currentUser={props.currentUser}/>
+          <UserBio updateProfile={props.updateProfile} currentUser={props.currentUser}/>
         </InnerContainer>
         
         <InnerContainer>
@@ -24,7 +24,8 @@ const Container = styled.div`
   padding: 20px;
   max-width: 100vw;
   @media (min-width: 768px) {
-    margin-top: 40px;
+    margin-top: auto;
+    margin-bottom: auto;
     flex-direction: row-reverse;
   }
   @media (max-width: 768px) {
@@ -38,7 +39,8 @@ const InnerContainer = styled.div`
   align-items: center;
   justify-content: center;
   width: 70vw;
-  border: 6px solid #d2869c;
+  background-color: #303030;
+  box-shadow: 0px 0px 30px #d2869c;
   border-radius: 10px;
   padding: 20px;
   @media (min-width: 768px) {

@@ -3,7 +3,7 @@ import styled from 'styled-components'
 import { NavLink } from 'react-router-dom';
 import oraqleScript from '../fonts/OraqleScript/OraqleScript.woff';
 
-function Navbar(){
+function Navbar(props){
 
   let [linkDisplay, setLinkDisplay] = useState('hideLinks')
 
@@ -17,15 +17,15 @@ function Navbar(){
     <Container>
 
       <Top>
-        <NavLink to="/" className="home" >Viaggiamo</NavLink>
+        <NavLink to="/" className="home" onClick={openNavbar} >Viaggiamo</NavLink>
         <svg id="icon" onClick={openNavbar} viewBox="0 0 15 15" fill="none" xmlns="http://www.w3.org/2000/svg" width="25" height="30"><path d="M0 5.5h15m-15-4h15m-15 8h15m-15 4h15" stroke="currentColor"></path></svg>
       </Top>
 
       <Bottom className={linkDisplay}>
-        <NavLink to="/lessons" >Lessons</NavLink>
-        <NavLink to="/speech" >Speech/Text</NavLink>
-        <NavLink to="/messages" >Messages</NavLink>
-        <NavLink to="/" >Log Out</NavLink>
+        <NavLink to="/lessons" onClick={openNavbar} >Lessons</NavLink>
+        <NavLink to="/speech" onClick={openNavbar} >Speech/Text</NavLink>
+        <NavLink to="/messages" onClick={openNavbar} >Messages</NavLink>
+        <NavLink to="/" onClick={props.logout} >Log Out</NavLink>
       </Bottom>
 
     </Container>
