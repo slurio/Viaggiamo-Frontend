@@ -1,4 +1,5 @@
 import React from "react";
+import { NavLink } from "react-router-dom"
 import { Form, Button, Col} from "react-bootstrap";
 
 class SpeechOutput extends React.Component {
@@ -6,7 +7,11 @@ class SpeechOutput extends React.Component {
     returnValue: '',
     voiceSpeed: 0.8,
     lang: 'en',
-    voices: window.speechSynthesis.getVoices(),
+    selectedVoice: 'Alex',
+    saveForm: false,
+    description: "",
+    newCategory: "",
+    // voices: window.speechSynthesis.getVoices(),
   }
 
   // componentDidMount = () => {
@@ -22,7 +27,11 @@ class SpeechOutput extends React.Component {
     let text = e.target.translateText.value
     let voiceName = e.target.voice.value.split(' ')[0]
     let utterThis = new SpeechSynthesisUtterance()  
-   let setVoice = this.state.voices.find(voice => voice.name === voiceName)
+    let setVoice = this.props.voices.find(voice => voice.name === voiceName)
+
+    this.setState({
+      selectedVoice: voiceName
+    })
 
     utterThis.rate = this.state.voiceSpeed
     utterThis.text = text
@@ -77,6 +86,51 @@ class SpeechOutput extends React.Component {
     }))
   }
 
+  showSaveForm = (e) => {
+    this.setState({
+      saveForm: true
+    })
+  }
+
+  renderCategories = () => {
+    let index = 0
+    return this.props.categories.map(category => <option key={index += 1}>{category.title}</option>)
+  }
+
+  renderSaveForm = (e) => {
+    this.setState({
+      [e.target.name]: e.target.value
+    })
+  }
+
+  saveMessage = (e) => {
+    e.preventDefault()
+
+    let text = this.state.returnValue
+    let language = this.state.lang
+    let voice = this.state.selectedVoice
+    let title
+
+    if(e.target.newCategory.value === ""){
+      title = e.target.existingCategory.value
+    }else {
+      title = e.target.newCategory.value
+    }
+
+    let category = {
+      title: title,
+    }
+
+    let message = {
+      description: e.target.description.value,
+      language: language,
+      voice: voice,
+      content: text,
+      // category: category
+    }
+
+    this.props.saveMessage(category, message)
+  }
 
   render() {
     return (
@@ -122,11 +176,33 @@ class SpeechOutput extends React.Component {
             </Form.Group>
 
             <Form.Group controlId="button3">
-              <Button variant="info" type="button">Save</Button>
+              <Button onClick={this.showSaveForm} variant="info" type="button">Save</Button>
             </Form.Group>
 
           </Form.Row>                     
         </Form>
+
+        {this.state.saveForm ?
+        <>
+          <h1>form</h1>
+          <form onSubmit={this.saveMessage}>
+            <label>Category</label>
+            <select name="existingCategory">
+              {this.renderCategories()}
+            </select>
+
+            <label>Create Category</label>
+            <input name="newCategory" onChange={this.renderSaveForm} type="text" value={this.state.newCategory}/>
+
+            <label>Description</label>
+            <input name="description" onChange={this.renderSaveForm} type="text" value={this.state.description}/>
+            <NavLink to={"/messages"}>
+              <input type="submit" value="submit"/>
+            </NavLink>
+          </form>
+        </>
+   
+         : null}
       </div>
     )
   }

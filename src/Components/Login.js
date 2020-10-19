@@ -1,6 +1,5 @@
 import React from 'react'
 import styled from 'styled-components'
-import logo from '../images/logo1.png'
 import globe from '../images/worldlogo.png'
 import oraqleScript from '../fonts/OraqleScript/OraqleScript.woff';
 

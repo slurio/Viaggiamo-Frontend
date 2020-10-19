@@ -7,7 +7,7 @@ const recognition = new SpeechRecognition()
 class SpeechInput extends React.Component {    
   state = {
       voiceSpeed: 0.8,
-      voices: window.speechSynthesis.getVoices(),
+      // voices: window.speechSynthesis.getVoices(),
       speak: false,
       language: ''
     }
@@ -79,7 +79,7 @@ class SpeechInput extends React.Component {
     let voiceName = e.target.voice.value.split(' ')[0]
     let utterThis = new SpeechSynthesisUtterance()
     //  let setVoice = this.props.voices.find(voice => voice.name === voiceName)
-    let setVoice = this.state.voices.find(voice => voice.name === voiceName)
+    let setVoice = this.props.voices.find(voice => voice.name === voiceName)
     
     utterThis.rate = this.state.voiceSpeed
     utterThis.text = text
