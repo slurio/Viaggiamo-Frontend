@@ -40,7 +40,7 @@ const Container = styled.div`
   }
   display: flex;
   top: 0;
-  background-color: #303030;
+  background-color: #1b232c;
   width: 100vw;
   align-items: center;
   @media (min-width: 768px) {

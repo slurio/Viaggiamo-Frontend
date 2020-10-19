@@ -86,16 +86,8 @@ function App() {
           setCategories(updatedCategories)
           console.log("if title does not exist", updatedCategories)  
         }
-        // console.log(this.props.history)
-        // this.props.history.push("/messages")
-        // renderRedirect()
       })
   }
-
-  // const renderRedirect = () => {
-  //   console.log('redirect')
-  //   return <Redirect to="/messages" />
-  // }
 
   return (
     <div className="App">

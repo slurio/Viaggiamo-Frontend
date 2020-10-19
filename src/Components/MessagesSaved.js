@@ -10,7 +10,6 @@ function MessagesSaved(props){
   }
 
   const renderMessageCards = () => {
-    console.log(props.categories)
     if(props.categorySelected === ""){
       return props.categories[0].messages.map(message=> <MessageCard key={message.id} message={message} renderMessage={props.renderMessage}/>)
     } else {
@@ -25,10 +24,10 @@ function MessagesSaved(props){
 
   return(
     <Container>
-        <h3>Saved Messages</h3>
-        <select name="categories" onChange={renderSelect}>
+        <Header>Saved Messages</Header>
+        <Select name="categories" onChange={renderSelect}>
           {renderOptions()}
-        </select>
+        </Select>
         {renderMessageCards()}
     </Container>
   )
@@ -36,8 +35,22 @@ function MessagesSaved(props){
 
 export default MessagesSaved
 
+const Header = styled.header `
+  margin: 20px;
+  color: #3D3C53;
+  font-weight: bold;
+  font-size: calc(6px + 2vmin);
+`
+
+const Select = styled.select `
+  color: 3D3C53;
+  margin-bottom: 20px;
+  font-size: 16px;
+  padding: 6px;
+`
+
 const Container = styled.div`
-  width: 50vh; 
+  width: 35vh; 
   height: 100vh;
   background-color: white;
   color: #3D3C53;

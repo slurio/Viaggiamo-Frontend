@@ -17,8 +17,12 @@ function MessageCard(props){
 export default MessageCard
 
 const Title = styled.div`
-    font-size: calc(8px + 2vmin);
-    cursor: pointer;
-    padding: 10px;
-    margin-left: 20px;
+    font-size: 16px;
+    padding-left: 20px;
+    font-weight: 600;
+    &:hover{
+        color: white;
+        background-color: #A594F9;
+        cursor: pointer;
+      }
 `

@@ -39,7 +39,7 @@ const InnerContainer = styled.div`
   align-items: center;
   justify-content: center;
   width: 70vw;
-  background-color: #303030;
+  background-color: #1b232c;
   box-shadow: 0px 0px 30px #A594F9;
   border-radius: 10px;
   padding: 20px;

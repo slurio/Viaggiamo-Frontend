@@ -61,13 +61,36 @@ export default class Message extends React.Component {
     })
   }
 
+  deleteMessage = (messageObj) => {
+    const options = {
+      method: "DELETE",
+    }
+
+    fetch('http://localhost:3001/messages/' + messageObj.id, options)
+      .then(resp=>resp.json())
+      .then(deleted => {
+        let categories = this.state.categories  
+        let messageCategory = deleted.category.title
+        let selectedCategory = categories.find(category => messageCategory === category.title )
+        let message = selectedCategory.messages.find(el => el.id === deleted.id)
+        let index = selectedCategory.messages.indexOf(message)
+        selectedCategory.messages.splice(index, 1)
+        
+        this.setState({
+          categories: categories,
+          message: "",
+          messageContent: "",
+        })
+      }) 
+  }
+
   render() {
     return(
       <Container>
         <LeftBar>
           <MessagesSaved updatedMessage={this.state.message} renderSelect={this.renderSelect} renderMessage={this.renderMessage} categories={this.props.categories} categorySelected={this.state.categorySelected}/>
         </LeftBar>
-        <MessageForm saveMessage={this.saveMessage} renderTextChange={this.renderTextChange} message={this.state.message} content={this.state.messageContent}/>
+        <MessageForm deleteMessage={this.deleteMessage} saveMessage={this.saveMessage} renderTextChange={this.renderTextChange} message={this.state.message} content={this.state.messageContent}/>
       </Container>
     )
   }
