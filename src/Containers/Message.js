@@ -68,7 +68,7 @@ export default class Message extends React.Component {
       method: "DELETE",
     }
 
-    fetch('http://localhost:3001/messages/' + messageObj.id, options)
+    fetch(`http://localhost:3001/messages/${messageObj.id}`, options)
       .then(resp=>resp.json())
       .then(deleted => {
         let categories = this.props.categories  

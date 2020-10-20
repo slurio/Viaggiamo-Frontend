@@ -93,7 +93,6 @@ const Form = styled.form`
     border-radius: 10px;
     font-weight: bold;
     padding: 6px;
-    color: white;
     cursor: pointer;
     &:hover {
       color: #A594F9;
@@ -102,13 +101,22 @@ const Form = styled.form`
   `
 
 const Button = styled.button`
+  font-weight: bold;
+  color: #3D3C53;
   background-color: transparent;
   border: 2px solid #A594F9;
   border-radius: 10px;
-  font-weight: bold;
   padding: 6px;
-  color: white;
+
+  /* background-color: transparent;
+  border: 2px solid #A594F9;
+  border-radius: 10px;
+  font-weight: bold;
+  padding: 6px; */
+
   &:hover {
-    color: #A594F9;
+    /* color: white; */
+    background-color: #A594F9;
+    cursor: pointer;
   }
   `
