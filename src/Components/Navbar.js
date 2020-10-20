@@ -21,15 +21,15 @@ function Navbar(props){
     <Container>
 
       <Top>
-        <NavLink to="/" className="home" onClick={closeNavbar} >Viaggiamo</NavLink>
+        <NavLink to="/" className="home" onClick={closeNavbar}>VIAGGIAMO</NavLink>
         <svg id="icon" onClick={openNavbar} viewBox="0 0 15 15" fill="none" xmlns="http://www.w3.org/2000/svg" width="25" height="30"><path d="M0 5.5h15m-15-4h15m-15 8h15m-15 4h15" stroke="currentColor"></path></svg>
       </Top>
 
       <Bottom className={linkDisplay}>
-        <NavLink to="/lessons" onClick={closeNavbar} >Lessons</NavLink>
-        <NavLink to="/speech" onClick={closeNavbar} >Speech/Text</NavLink>
-        <NavLink to="/messages" onClick={closeNavbar} >Messages</NavLink>
-        <NavLink to="/" onClick={props.logout} >Log Out</NavLink>
+        <NavLink to="/lessons" onClick={closeNavbar} >LESSONS</NavLink>
+        <NavLink to="/speech" onClick={closeNavbar} >TRANSLATION</NavLink>
+        <NavLink to="/messages" onClick={closeNavbar} >MESSAGES</NavLink>
+        <NavLink to="/" onClick={props.logout} >LOG OUT</NavLink>
       </Bottom>
 
     </Container>
@@ -38,13 +38,10 @@ function Navbar(props){
 export default Navbar
 
 const Container = styled.div`
-  @font-face {
-    font-family: 'oraqleScript';
-    src: local('oraqleScript'), url(${oraqleScript}) format('woff');
-  }
+  padding: 20px;
   display: flex;
   top: 0;
-  background-color: #1b232c;
+  background-color: #1e1e1e;
   width: 100vw;
   align-items: center;
   @media (min-width: 768px) {
@@ -76,9 +73,14 @@ const Top = styled.div`
   a.home{
     /* potential colors 874876, d5cbe6, 443e86, d2869c */
     color: #A594F9;
-    font-size: 50px;
-    font-family: 'oraqleScript';
+    font-size: 25px;
+    font-weight: 900;
+    letter-spacing: 4px;
     text-decoration: none;
+    &:hover{
+      color: #EBEBEB;
+      cursor: pointer;
+    }
   }
   @media (min-width: 768px) {
     width: 20vw;
@@ -87,13 +89,18 @@ const Top = styled.div`
   `
 
 const Bottom = styled.div`
+  font-weight: 500;
   display: flex;
-  font-weight: bold;
   a {
-    color: #F4F4F9;
+    color: #EBEBEB;
     text-decoration: none;
     padding: 5px;
-    font-size: 25px;
+    font-size: 20px;
+    letter-spacing: 3px;
+    &:hover{
+      color: #A594F9;
+      cursor: pointer;
+    }
   }
   @media (min-width: 768px) {
     width: 80vw;

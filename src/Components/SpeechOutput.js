@@ -4,7 +4,7 @@ import { Form, Col, Modal} from "react-bootstrap";
 
 class SpeechOutput extends React.Component {
   state={
-    returnValue: '',
+    // returnValue: '',
     voiceSpeed: 0.8,
     lang: 'en',
     selectedVoice: 'Alex',
@@ -72,19 +72,22 @@ class SpeechOutput extends React.Component {
     this.setState({
       lang: langValue
     })
+
+    //test
+    this.props.handleTranslationLan(langValue)
   }
 
-  translate = () => {
-    let sourceLang = this.props.inputLang
-    let sourceText = this.props.text
-    let targetLang = this.state.lang
+  // translate = () => {
+  //   let sourceLang = this.props.inputLang
+  //   let sourceText = this.props.text
+  //   let targetLang = this.state.lang
 
-    fetch("https://translate.googleapis.com/translate_a/single?client=gtx&sl=" + sourceLang + "&tl=" + targetLang + "&dt=t&q=" + encodeURI(sourceText))
-    .then(resp=>resp.json())
-    .then(data=> this.setState({
-      returnValue: data[0][0][0]
-    }))
-  }
+  //   fetch("https://translate.googleapis.com/translate_a/single?client=gtx&sl=" + sourceLang + "&tl=" + targetLang + "&dt=t&q=" + encodeURI(sourceText))
+  //   .then(resp=>resp.json())
+  //   .then(data=> this.setState({
+  //     returnValue: data[0][0][0]
+  //   }))
+  // }
 
   showSaveForm = (e) => {
     this.setState({
@@ -106,7 +109,7 @@ class SpeechOutput extends React.Component {
   saveMessage = (e) => {
     e.preventDefault()
 
-    let text = this.state.returnValue
+    let text = this.props.translatedText
     let language = this.state.lang
     let voice = this.state.selectedVoice
     let title
@@ -169,13 +172,13 @@ class SpeechOutput extends React.Component {
           </Form.Row>
 
           <Form.Group controlId="text.ControlInput2">
-              <Form.Control readOnly as="textarea" rows="8" placeholder="Translated text will appear here :)" name="translateText" value={this.state.returnValue}/>
+              <Form.Control readOnly as="textarea" rows="8" placeholder="Translated text will appear here :)" name="translateText" value={this.props.translatedText}/>
           </Form.Group>
 
           <Form.Row>
-            <Form.Group controlId="button1">  
+            {/* <Form.Group controlId="button1">  
                 <button className="translateButton" onClick={this.translate}type="button" name="translate" variant="success" size="">Translate</button>
-            </Form.Group>
+            </Form.Group> */}
 
             <Form.Group controlId="button2">
               <button className="hearOutLoudButton" type="submit">Hear Out Loud</button>
