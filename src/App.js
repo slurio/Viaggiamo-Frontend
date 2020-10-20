@@ -131,6 +131,7 @@ export default  withRouter(App);
 
 // button backgrounds: #333333
 // button text color: #A594F9
+
 // button background hover: #A594F9
 // button text color: #272727 || #EBEBEB
 

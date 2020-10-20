@@ -172,7 +172,7 @@ class SpeechOutput extends React.Component {
           </Form.Row>
 
           <Form.Group controlId="text.ControlInput2">
-              <Form.Control readOnly as="textarea" rows="8" placeholder="Translated text will appear here :)" name="translateText" value={this.props.translatedText}/>
+              <Form.Control readOnly size="lg" as="textarea" rows="8" placeholder="Translated text will appear here :)" name="translateText" value={this.props.translatedText}/>
           </Form.Group>
 
           <Form.Row>
@@ -197,7 +197,7 @@ class SpeechOutput extends React.Component {
             {...this.props}
             centered
           >
-            <Form onSubmit={this.saveMessage}>
+            <Form className="SaveForm" onSubmit={this.saveMessage}>
               <Modal.Header closeButton onClick={this.closeForm}>
                 <Modal.Title>Save Message</Modal.Title>
               </Modal.Header>

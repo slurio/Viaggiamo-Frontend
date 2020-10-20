@@ -142,7 +142,7 @@ class SpeechInput extends React.Component {
           </Form.Row>    
 
           <Form.Group controlId="text.ControlInput2">
-            <Form.Control as="textarea" rows="8" placeholder="Please enter or talk text here" name="text" value={this.props.text} onChange={this.renderChange}/>
+            <Form.Control size="lg" as="textarea" rows="8" placeholder="Please enter or talk text here" name="text" value={this.props.text} onChange={this.renderChange}/>
           </Form.Group>
 
           <Form.Row>

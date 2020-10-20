@@ -18,11 +18,12 @@ export default MessageCard
 
 const Title = styled.div`
     font-size: 16px;
-    padding-left: 20px;
+    padding-left: 16px;
+    padding-top: 10px;
     font-weight: 600;
     &:hover{
         color: white;
-        background-color: #A594F9;
+        background-color: #474747;
         cursor: pointer;
       }
 `
