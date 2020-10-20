@@ -13,7 +13,9 @@ export default class Message extends React.Component {
 
   renderSelect = (category) => {
     this.setState({
-      categorySelected: category
+      categorySelected: category,
+      message: "",
+      messageContent: "",
     })
   }
 
@@ -69,7 +71,7 @@ export default class Message extends React.Component {
     fetch('http://localhost:3001/messages/' + messageObj.id, options)
       .then(resp=>resp.json())
       .then(deleted => {
-        let categories = this.state.categories  
+        let categories = this.props.categories  
         let messageCategory = deleted.category.title
         let selectedCategory = categories.find(category => messageCategory === category.title )
         let message = selectedCategory.messages.find(el => el.id === deleted.id)
@@ -85,6 +87,7 @@ export default class Message extends React.Component {
   }
 
   render() {
+
     return(
       <Container>
         <LeftBar>
