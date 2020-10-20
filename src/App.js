@@ -11,7 +11,7 @@ import Login from './Components/Login'
 import Navbar from './Components/Navbar'
 
 function App() {
-  let [currentUser, setCurrentUser] = useState('s')
+  let [currentUser, setCurrentUser] = useState('')
   let [categories, setCategories] = useState('')
   let [voices, setVoices] = useState('')
   let [selectedCategory, setSelectedCategory] = useState('')
@@ -127,3 +127,12 @@ function App() {
 }
 
 export default  withRouter(App);
+
+
+// button backgrounds: #333333
+// button text color: #A594F9
+// button background hover: #A594F9
+// button text color: #272727 || #EBEBEB
+
+// card background: #272727
+// card shadow: box-shadow: 0px 8px 8px 2px #1c1c1c;

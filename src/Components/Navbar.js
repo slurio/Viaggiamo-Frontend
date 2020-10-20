@@ -26,11 +26,11 @@ function Navbar(props){
       </Top>
 
       <Bottom className={linkDisplay}>
-        <NavLink to="/endless" onClick={closeNavbar} >Endless Run</NavLink>
-        <NavLink to="/lessons" onClick={closeNavbar} >Lessons</NavLink>
-        <NavLink to="/speech" onClick={closeNavbar} >Speech/Text</NavLink>
-        <NavLink to="/messages" onClick={closeNavbar} >Messages</NavLink>
-        <NavLink to="/" onClick={props.logout} >Log Out</NavLink>
+        <NavLink to="/endless" onClick={closeNavbar} >ENDLESS RUN</NavLink>
+        <NavLink to="/lessons" onClick={closeNavbar} >LESSONS</NavLink>
+        <NavLink to="/speech" onClick={closeNavbar} >TRANSLATOR</NavLink>
+        <NavLink to="/messages" onClick={closeNavbar} >MESSAGES</NavLink>
+        <NavLink to="/" onClick={props.logout} >LOG OUT</NavLink>
       </Bottom>
 
     </Container>
@@ -57,7 +57,6 @@ const Container = styled.div`
       display: none;
     }
     & > .showLinks{
-      /* background-color: #525252; */
       background-image: linear-gradient(#303030 5%, #685d9e); 
       /* alternate colors 685d9e 7c6fbd */
       text-align: center;
@@ -85,7 +84,6 @@ const Top = styled.div`
   }
   @media (min-width: 768px) {
     width: 20vw;
-    margin-right: -5vw;
   }
   `
 

@@ -34,6 +34,7 @@ const Container = styled.div`
 const Label = styled.label `
   letter-spacing: 2px;
   padding-bottom: 12px;
+  font-weight: bold;
 ` 
 const Title = styled.h2`
   color: #A594F9;
@@ -58,6 +59,7 @@ const Form = styled.form`
   font-size: calc(8px + 2vmin);
   border-radius: 10px;
   width: 60vw;
+  border: 2px solid #A594F9;
   & > input {
     font-size: calc(10px + 2vmin);
   }

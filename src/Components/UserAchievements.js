@@ -5,32 +5,32 @@ import flagGE from '../images/german.png'
 import flagIT from '../images/italian.png'
 import flagES from '../images/spanish.png'
 // import trophy from '../images/trophy.png'
-import trophy from '../images/tropyIcon.png'
+import trophy from '../images/goldtrophy.png'
 
 function UserAchievements(props){
   return(
     <>
       <img style={{maxWidth: "15vw", maxHeight: "15vh", marginLeft: "auto", marginRight: "auto" }} src={trophy} alt="" />
-      <Header>Achievements</Header>
+      <Header>HISCORES</Header>
 
       <AchievementContainer>
         <AchievementImage src={flagES} alt="" />
-        Spanish - {props.currentUser.spanish}/10
+        Spanish - {props.currentUser.spanish}
       </AchievementContainer>
       
       <AchievementContainer>
         <AchievementImage src={flagGE} alt="" />
-        German - {props.currentUser.german}/10
+        German - {props.currentUser.german}
       </AchievementContainer>
       
       <AchievementContainer>
         <AchievementImage src={flagIT} alt="" />
-        Italian - {props.currentUser.italian}/10
+        Italian - {props.currentUser.italian}
       </AchievementContainer>
       
       <AchievementContainer>
         <AchievementImage src={flagFR} alt="" />
-        French - {props.currentUser.french}/10
+        French - {props.currentUser.french}
       </AchievementContainer>
     </>
   )
@@ -49,7 +49,7 @@ const AchievementImage = styled.img`
   margin: 2px;
   padding: 5px;
   `
-const Header = styled.h3`
+const Header = styled.h2`
   padding: 20px;
   font-weight: bold;
   letter-spacing: 3px;

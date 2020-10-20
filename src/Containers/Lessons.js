@@ -42,7 +42,7 @@ export default class Lessons extends React.Component {
 }
 
 const Container = styled.div`
-  background-color: #1b232c;
+  background-color: #1e1e1e;
   box-shadow: 0px 0px 30px #A594F9;
   border-radius: 10px;
   padding: 20px;
