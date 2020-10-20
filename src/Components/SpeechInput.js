@@ -60,8 +60,17 @@ class SpeechInput extends React.Component {
   renderOptions = () => {
     let synth = window.speechSynthesis
     let voices = synth.getVoices()
+
+    let enVoices = voices.filter(voice => voice.lang.toLowerCase().includes('en'))
+    let frVoices = voices.filter(voice => voice.lang.toLowerCase().includes('fr'))
+    let esVoices = voices.filter(voice => voice.lang.toLowerCase().includes('es'))
+    let itVoices = voices.filter(voice => voice.lang.toLowerCase().includes('it'))
+    let deVoices = voices.filter(voice => voice.lang.toLowerCase().includes('de'))
+
+    let voicesRender = enVoices.concat(frVoices).concat(esVoices).concat(itVoices).concat(deVoices)
+    
     let index = 0
-    return voices.map(voice => <option key={index += 1}>{voice.name + ' (' + voice.lang + ')'}</option>)
+    return voicesRender.map(voice => <option key={index += 1}>{voice.name + ' (' + voice.lang + ')'}</option>)
   }
   
   renderVoice = (e) => {

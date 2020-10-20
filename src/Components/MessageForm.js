@@ -60,6 +60,10 @@ class MessageForm extends React.Component {
     
   }
 
+  deleteMessage = () => {
+    this.props.deleteMessage(this.props.message)
+  }
+
   render() {
     return(
       <div className="MessageForm">
@@ -79,6 +83,7 @@ class MessageForm extends React.Component {
                       
           <button className="hearOutLoudButton" type="submit">Hear Out Loud</button>
           <button className="SaveButton" type="button" onClick={this.saveMessage}>Save</button>
+          <button className="DeleteButton" type="button" onClick={this.deleteMessage}>Delete</button>
         </form>
       </div>    
     )

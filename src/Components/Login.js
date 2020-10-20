@@ -11,7 +11,6 @@ function Login(props){
   }
   return(
     <Container>
-      {/* <Img src={logo} alt="" /> */}
       <Img style={{maxWidth: "35vw", maxHeight: "35vh", marginLeft: "auto", marginRight: "auto" }} src={globe} alt="" />
       <Title>Viaggiamo</Title>
       <Form onSubmit={login}>

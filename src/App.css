@@ -85,7 +85,6 @@
 }
 
 .MessageForm .hearOutLoudButton{
-  margin-left: 20px;
   font-weight: bold;
   color: white;
   background-color: #A594F9;
@@ -102,6 +101,24 @@
   cursor: pointer;
 }
 
+.DeleteButton{
+  margin-left: 20px;
+  font-weight: bold;
+  color: #A594F9;
+  background-color: transparent;
+  border: 2px solid #A594F9;
+  border-radius: 10px;
+  padding: 6px;
+  font-size: calc(4px + 2vmin);
+}
+
+.DeleteButton:hover{
+  color: #3D3C53;
+  background-color: #A594F9;
+  border: 2px solid #A594F9;
+  cursor: pointer;
+}
+
 @media(max-width: 768px) {
   .SpeechOutput {
     width: 80vw;
@@ -112,9 +129,8 @@
 } 
 
 .MessageForm{
-  margin-right: 10%;
-  margin-left: 10%;
-  width: 45%;
+  margin: 12%;
+  width: 55%;
   color: #3D3C53;
   background-color: white;
   padding: 25px;

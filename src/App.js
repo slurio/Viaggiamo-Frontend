@@ -13,6 +13,7 @@ function App() {
   let [currentUser, setCurrentUser] = useState('')
   let [categories, setCategories] = useState('')
   let [voices, setVoices] = useState('')
+  let [selectedCategory, setSelectedCategory] = useState('')
 
   useEffect(() => {
     window.speechSynthesis.onvoiceschanged = () => {
@@ -80,22 +81,15 @@ function App() {
           let index = updatedCategories.indexOf(oldCategory)
           updatedCategories[index] = category
           setCategories(updatedCategories)
-          console.log("if title existed", updatedCategories)  
+          // setSelectedCategory(oldCategory.title)
         }else {
           let updatedCategories = [category,...currentUser.categories]
           setCategories(updatedCategories)
-          console.log("if title does not exist", updatedCategories)  
+          // setSelectedCategory(category.title)
         }
-        // console.log(this.props.history)
-        // this.props.history.push("/messages")
-        // renderRedirect()
       })
   }
 
-  // const renderRedirect = () => {
-  //   console.log('redirect')
-  //   return <Redirect to="/messages" />
-  // }
 
   return (
     <div className="App">
@@ -105,7 +99,7 @@ function App() {
             <Navbar logout={logout} />
             <Route path="/" exact render={() => <UserProfile updateProfile={updateProfile} currentUser={currentUser}/>} />
             <Route path="/speech" render={() => <SpeechText saveMessage={saveMessage} voices={voices} categories={currentUser.categories}/>}  />
-            <Route path="/messages" render={() => <Message categories={categories} voices={voices}/> } />
+            <Route path="/messages" render={() => <Message categories={categories} voices={voices}/>}/>
             <Route path="/lessons" render={() => <Lessons />} />
           </>
       }
