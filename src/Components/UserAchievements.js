@@ -14,22 +14,22 @@ function UserAchievements(props){
 
       <AchievementContainer>
         <AchievementImage src={flagES} alt="" />
-        Spanish - 2/10
+        Spanish - {props.currentUser.spanish}/10
       </AchievementContainer>
       
       <AchievementContainer>
         <AchievementImage src={flagGE} alt="" />
-        German - 4/10
+        German - {props.currentUser.german}/10
       </AchievementContainer>
       
       <AchievementContainer>
         <AchievementImage src={flagIT} alt="" />
-        Italian - 1/10
+        Italian - {props.currentUser.italian}/10
       </AchievementContainer>
       
       <AchievementContainer>
         <AchievementImage src={flagFR} alt="" />
-        French - 6/10
+        French - {props.currentUser.french}/10
       </AchievementContainer>
     </>
   )

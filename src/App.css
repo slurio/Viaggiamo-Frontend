@@ -19,6 +19,7 @@
   background-color: white;
   padding: 25px;
   border-radius: 25px;
+  margin: 10px;
 }
 
 .SpeechInput{
@@ -27,6 +28,7 @@
   background-color: white;
   padding: 25px;
   border-radius: 25px;
+  margin: 10px;
 }
 
 .hearOutLoudButton{

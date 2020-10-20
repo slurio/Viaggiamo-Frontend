@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react'
-import { Route, Redirect, withRouter } from 'react-router-dom';
+import { Route, withRouter } from 'react-router-dom';
 import 'bootstrap/dist/css/bootstrap.min.css'
 import './App.css';
 import SpeechText from './Containers/SpeechText'

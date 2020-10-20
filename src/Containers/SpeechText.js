@@ -37,7 +37,6 @@ const Container = styled.div`
   justify-content: space-evenly;
   margin: auto;
   font-size: 65%;
-
   @media (max-width: 768px) {
     flex-direction: column;
     align-items: center;

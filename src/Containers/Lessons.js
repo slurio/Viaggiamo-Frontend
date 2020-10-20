@@ -5,28 +5,38 @@ import LessonLevel from '../Components/LessonLevel'
 
 export default class Lessons extends React.Component {
   state = {
-    currentLang: 'French',
-    selectedCourse: false
+    questionList: [],
+    currentLang: 'French'
   }
 
   startCourse = (lang) => {
+    if(!lang){lang = "French"}
+      
+    fetch(`http://localhost:3001/lessons/${lang}`)
+      .then(resp=>resp.json())
+      .then(data=> this.setState({
+        questionList: data,
+        currentLang: lang
+      }
+      ))
+  }
+
+  resetLessons = () => {
     this.setState({
-      currentLang: lang ? lang : "French",
-      selectedCourse: true
+      questionList: [],
+      currentLang: 'French'
     })
   }
 
   render(){
     return(
-      <>
-        <Container>
-          {
-            this.state.selectedCourse
-            ? <LessonLevel questionList={[]} currentLang={this.state.currentLang}/>
-            : <LessonsStart startCourse={this.startCourse}/>
-          }
-        </Container>
-      </>
+      <Container>
+        {
+          this.state.questionList.length > 0
+          ? <LessonLevel questionList={this.state.questionList} currentLang={this.state.currentLang} resetLessons={this.resetLessons}/>
+          : <LessonsStart startCourse={this.startCourse}/>
+        }
+      </Container>
     )
   }
 }

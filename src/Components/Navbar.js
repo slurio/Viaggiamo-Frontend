@@ -13,18 +13,22 @@ function Navbar(props){
     : setLinkDisplay('hideLinks')
   }
 
+  function closeNavbar() {
+    setLinkDisplay('hideLinks')
+  }
+
   return(
     <Container>
 
       <Top>
-        <NavLink to="/" className="home" onClick={openNavbar} >Viaggiamo</NavLink>
+        <NavLink to="/" className="home" onClick={closeNavbar} >Viaggiamo</NavLink>
         <svg id="icon" onClick={openNavbar} viewBox="0 0 15 15" fill="none" xmlns="http://www.w3.org/2000/svg" width="25" height="30"><path d="M0 5.5h15m-15-4h15m-15 8h15m-15 4h15" stroke="currentColor"></path></svg>
       </Top>
 
       <Bottom className={linkDisplay}>
-        <NavLink to="/lessons" onClick={openNavbar} >Lessons</NavLink>
-        <NavLink to="/speech" onClick={openNavbar} >Speech/Text</NavLink>
-        <NavLink to="/messages" onClick={openNavbar} >Messages</NavLink>
+        <NavLink to="/lessons" onClick={closeNavbar} >Lessons</NavLink>
+        <NavLink to="/speech" onClick={closeNavbar} >Speech/Text</NavLink>
+        <NavLink to="/messages" onClick={closeNavbar} >Messages</NavLink>
         <NavLink to="/" onClick={props.logout} >Log Out</NavLink>
       </Bottom>
 
@@ -55,7 +59,9 @@ const Container = styled.div`
       display: none;
     }
     & > .showLinks{
-      background-color: #525252;
+      /* background-color: #525252; */
+      background-image: linear-gradient(#303030 5%, #685d9e); 
+      /* alternate colors 685d9e 7c6fbd */
       text-align: center;
       width: 100vw;
     }

@@ -1,5 +1,5 @@
 import React from "react";
-import { NavLink, withRouter, Redirect} from "react-router-dom"
+import { withRouter } from "react-router-dom"
 import { Form, Col, Modal} from "react-bootstrap";
 
 class SpeechOutput extends React.Component {
