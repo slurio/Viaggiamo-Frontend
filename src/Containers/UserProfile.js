@@ -39,10 +39,9 @@ const InnerContainer = styled.div`
   align-items: center;
   justify-content: center;
   width: 70vw;
-  background-color: #EBEBEB;
-  font-weight: bold;
-  color: #3D3C53;
-  box-shadow: 0px 0px 30px #A594F9;
+  background-color: #1e1e1e;
+  letter-spacing: 2px;
+  color: #EBEBEB;
   border-radius: 10px;
   padding: 20px;
   font-family: Arial, Helvetica, sans-serif;

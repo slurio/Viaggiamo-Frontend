@@ -12,10 +12,10 @@ function Login(props){
   return(
     <Container>
       <Img style={{maxWidth: "35vw", maxHeight: "35vh", marginLeft: "auto", marginRight: "auto" }} src={globe} alt="" />
-      <Title>Viaggiamo</Title>
+      <Title>VIAGGIAMO</Title>
       <Form onSubmit={login}>
-        <label>Username: </label>
-        <input type="text" name="user"></input>
+        <Label>Username </Label>
+        <input type="text" name="user" placeholder="type in username"></input>
         <Button type="submit">Log In</Button>
       </Form>
     </Container>
@@ -28,17 +28,18 @@ const Container = styled.div`
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  text-align: center;
+
   height: 100vh;
   `
+const Label = styled.label `
+  letter-spacing: 2px;
+  padding-bottom: 12px;
+` 
 const Title = styled.h2`
   color: #A594F9;
-  @font-face {
-    font-family: 'oraqleScript';
-    src: local('oraqleScript'), url(${oraqleScript}) format('woff');
-  }
-  font-family: 'oraqleScript';
-  font-size: calc(60px + 2vmin);
+  font-weight: bold;
+  letter-spacing: 4px;
+  font-size: calc(25px + 2vmin);
 `
 
 const Img = styled.img`
@@ -46,16 +47,15 @@ const Img = styled.img`
   border-radius: 30px;
   `
 
-const Form = styled.form`
-  font-weight: bold;
-  color: #3D3C53;
+const Form = styled.form` 
+  color: #EBEBEB;
   display: flex;
   flex-direction: column;
   margin-top: 30px;
   margin-bottom: 50px;
-  padding: 10px;
-  background-color: #EBEBEB;
-  box-shadow: 0px 0px 30px #A594F9;
+  padding: 20px;
+  background-color: #1e1e1e;
+  font-size: calc(8px + 2vmin);
   border-radius: 10px;
   width: 60vw;
   & > input {
@@ -67,16 +67,16 @@ const Form = styled.form`
   `
 
 const Button = styled.button`
-  margin-top: 5px;
+  margin-top: 20px;
   font-weight: bold;
-  color: #3D3C53;
-  background-color: transparent;
-  border: 2px solid #3D3C53;
+  color: #1e1e1e;
+  background-color: #A594F9;
+  border: 2px solid #A594F9;
   border-radius: 10px;
   padding: 6px;
   font-size: calc(10px + 2vmin);
   &:hover{
-    color: #3D3C53;
+    color: #EBEBEB;
     background-color: #A594F9;
     cursor: pointer;
   }

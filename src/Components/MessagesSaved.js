@@ -37,23 +37,25 @@ export default MessagesSaved
 
 const Header = styled.header `
   margin: 20px;
-  color: #3D3C53;
+  color: #EBEBEB;
   font-weight: bold;
+  letter-spacing: 4px;
   font-size: calc(6px + 2vmin);
 `
 
 const Select = styled.select `
-  color: 3D3C53;
+  color: #1e1e1e;
   margin-bottom: 20px;
   font-size: 16px;
   padding: 6px;
 `
 
 const Container = styled.div`
-  width: 35vh; 
+  width: 35vh;
+  letter-spacing: 3px; 
   height: 100vh;
-  background-color: white;
-  color: #3D3C53;
+  background-color: #1e1e1e;
+  color: #EBEBEB;
   font-size: calc(8px + 2vmin);
   display: flex;
   flex-direction: column;

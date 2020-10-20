@@ -61,7 +61,6 @@ const Img = styled.img`
   max-height: 30vh;
   max-width: 30vh;
   border-radius: 50%;
-  box-shadow: 0px 0px 30px #A594F9;
   `
 
 const Username = styled.h2`
@@ -79,6 +78,7 @@ const Form = styled.form`
   align-items: center;
   margin: 15px;
   width: 80%;
+  padding: 10px;
   & textarea {
     width: 100%;
     height: 20vh;
@@ -102,12 +102,12 @@ const Form = styled.form`
 
 const Button = styled.button`
   font-weight: bold;
-  color: #3D3C53;
-  background-color: transparent;
+  color: #1e1e1e;
+  background-color: #A594F9;
   border: 2px solid #A594F9;
   border-radius: 10px;
   padding: 6px;
-
+  
   /* background-color: transparent;
   border: 2px solid #A594F9;
   border-radius: 10px;
@@ -115,7 +115,7 @@ const Button = styled.button`
   padding: 6px; */
 
   &:hover {
-    /* color: white; */
+    color: #EBEBEB;
     background-color: #A594F9;
     cursor: pointer;
   }

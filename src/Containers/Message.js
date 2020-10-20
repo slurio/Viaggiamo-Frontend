@@ -14,7 +14,7 @@ export default class Message extends React.Component {
   renderSelect = (category) => {
     this.setState({
       categorySelected: category,
-      message: "",
+      message: false,
       messageContent: "",
     })
   }

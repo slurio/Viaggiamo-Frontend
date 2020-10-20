@@ -65,27 +65,31 @@ class MessageForm extends React.Component {
   }
 
   render() {
+    console.log(this.props.message)
     return(
-      <div className="MessageForm">
-        <p style={{fontSize: '28px'}}>Description: {this.props.message ? <span>{this.props.message.description}</span> : null}</p>
-        <p style={{fontSize: '22px'}}>Language: {this.props.message ? <span>{this.renderLanguage()}</span> : null}</p>
-        <form onSubmit={this.renderVoice}>   
-          <Form.Row>
-            <Form.Group as={Col} controlId="speed.ControlInput1">
-              <Form.Label>Choose Speed:</Form.Label>
-              <Form.Control type="number" name="voiceSpeed" min="0.5" max="2" step="0.1" onChange={this.renderSpeed} value={this.state.voiceSpeed}></Form.Control>
+      this.props.message ?   
+        <div className="MessageForm">
+          <p style={{fontSize: '28px'}}>Description: {this.props.message ? <span>{this.props.message.description}</span> : null}</p>
+          <p style={{fontSize: '22px'}}>Language: {this.props.message ? <span>{this.renderLanguage()}</span> : null}</p>
+          <form onSubmit={this.renderVoice}>   
+            <Form.Row>
+              <Form.Group as={Col} controlId="speed.ControlInput1">
+                <Form.Label>Choose Speed:</Form.Label>
+                <Form.Control type="number" name="voiceSpeed" min="0.5" max="2" step="0.1" onChange={this.renderSpeed} value={this.state.voiceSpeed}></Form.Control>
+              </Form.Group>
+            </Form.Row>
+          
+            <Form.Group controlId="text.ControlInput2">
+              <Form.Control as="textarea" rows="8" name="text" value={this.props.content} onChange={this.renderTextChange}/>
             </Form.Group>
-          </Form.Row>
-        
-          <Form.Group controlId="text.ControlInput2">
-            <Form.Control as="textarea" rows="8" name="text" value={this.props.content} onChange={this.renderTextChange}/>
-          </Form.Group>
-                      
-          <button className="hearOutLoudButton" type="submit">Hear Out Loud</button>
-          <button className="SaveButton" type="button" onClick={this.saveMessage}>Save</button>
-          <button className="DeleteButton" type="button" onClick={this.deleteMessage}>Delete</button>
-        </form>
-      </div>    
+                        
+            <button className="hearOutLoudButton" type="submit">Hear Out Loud</button>
+            <button className="SaveButton" type="button" onClick={this.saveMessage}>Save</button>
+            <button className="DeleteButton" type="button" onClick={this.deleteMessage}>Delete</button>
+          </form>
+        </div> 
+      : null
+      
     )
   }
 }
