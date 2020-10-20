@@ -42,9 +42,10 @@ const Container = styled.div`
   padding: 20px;
   display: flex;
   top: 0;
-  background-color: #1e1e1e;
+  background-color: #272727;
   width: 100vw;
   align-items: center;
+  box-shadow: 0px 8px 8px 2px #1c1c1c;
   @media (min-width: 768px) {
     justify-content: space-around;
     #icon {
