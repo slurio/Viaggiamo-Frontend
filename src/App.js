@@ -6,11 +6,12 @@ import SpeechText from './Containers/SpeechText'
 import Message from './Containers/Message'
 import UserProfile from './Containers/UserProfile'
 import Lessons from './Containers/Lessons'
+import EndlessRun from './Containers/EndlessRun'
 import Login from './Components/Login'
 import Navbar from './Components/Navbar'
 
 function App() {
-  let [currentUser, setCurrentUser] = useState('')
+  let [currentUser, setCurrentUser] = useState('s')
   let [categories, setCategories] = useState('')
   let [voices, setVoices] = useState('')
   let [selectedCategory, setSelectedCategory] = useState('')
@@ -90,6 +91,23 @@ function App() {
       })
   }
 
+  function updateAchievements(answerCount, lang) {
+    if(answerCount < currentUser[`${lang.toLowerCase()}`]){return}
+
+    const options = {
+      method: "PATCH",
+      headers: {
+        "content-type": "application/json",
+        "accept": "application/json"
+      },
+      body: JSON.stringify({user: {[lang.toLowerCase()]: answerCount}})
+
+    }
+    fetch(`http://localhost:3001/users/${currentUser.id}`, options)
+      .then(resp=>resp.json())
+      .then(data=> setCurrentUser(data))
+  }
+
 
   return (
     <div className="App">
@@ -100,7 +118,8 @@ function App() {
             <Route path="/" exact render={() => <UserProfile updateProfile={updateProfile} currentUser={currentUser}/>} />
             <Route path="/speech" render={() => <SpeechText saveMessage={saveMessage} voices={voices} categories={currentUser.categories}/>}  />
             <Route path="/messages" render={() => <Message categories={categories} voices={voices}/>}/>
-            <Route path="/lessons" render={() => <Lessons />} />
+            <Route path="/lessons" render={() => <Lessons updateAchievements={updateAchievements}/>} />
+            <Route path="/endless" render={() => <EndlessRun />} />
           </>
       }
     </div>

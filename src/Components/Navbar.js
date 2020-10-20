@@ -26,6 +26,7 @@ function Navbar(props){
       </Top>
 
       <Bottom className={linkDisplay}>
+        <NavLink to="/endless" onClick={closeNavbar} >Endless Run</NavLink>
         <NavLink to="/lessons" onClick={closeNavbar} >Lessons</NavLink>
         <NavLink to="/speech" onClick={closeNavbar} >Speech/Text</NavLink>
         <NavLink to="/messages" onClick={closeNavbar} >Messages</NavLink>

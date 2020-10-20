@@ -33,7 +33,7 @@ export default class Lessons extends React.Component {
       <Container>
         {
           this.state.questionList.length > 0
-          ? <LessonLevel questionList={this.state.questionList} currentLang={this.state.currentLang} resetLessons={this.resetLessons}/>
+          ? <LessonLevel questionList={this.state.questionList} currentLang={this.state.currentLang} resetLessons={this.resetLessons} updateAchievements={this.props.updateAchievements}/>
           : <LessonsStart startCourse={this.startCourse}/>
         }
       </Container>

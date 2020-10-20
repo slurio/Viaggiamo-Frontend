@@ -7,6 +7,7 @@ import flagES from '../images/spanish.png'
 
 export default function LessonLevel(props){
   let [currentLevel, setCurrentLevel] = useState(0)
+  let [correctCount, setCorrectCount] = useState(0)
   let [disabledClass, setDisabledClass] = useState('')
   let [showContinue, setShowContinue] = useState(false)
   let [lessonOver, setLessonOver] = useState(false)
@@ -19,7 +20,7 @@ export default function LessonLevel(props){
 
   function clickHandler(e){
     setDisabledClass('disabled')
-    if(answerList.length === 4 && e.target.id !== answerList[3]){setAnswerColor('red')}
+    if(answerList.length === 4 && e.target.id !== answerList[3]){setAnswerColor('red')}else{setCorrectCount(correctCount + 1)}
     setShowContinue(true)
   }
 
@@ -36,7 +37,7 @@ export default function LessonLevel(props){
 
   function checkAnswer(e){
     e.preventDefault()
-    if(e.target.answer.value.replace(/[^0-9a-z]/gi, '').toLowerCase() !== answerList[0].replace(/[^0-9a-z]/gi, '').toLowerCase()){setAnswerColor('red')}
+    if(e.target.answer.value.replace(/[^0-9a-z]/gi, '').toLowerCase() !== answerList[0].replace(/[^0-9a-z]/gi, '').toLowerCase()){setAnswerColor('red')}else{setCorrectCount(correctCount + 1)}
     setShowContinue(true)
   }
 
@@ -78,6 +79,10 @@ export default function LessonLevel(props){
     }
   }
 
+  function updateAchievements(){
+    props.updateAchievements(correctCount, props.currentLang)
+  }
+
   return(
     <Container>
       <FlagImage src={getFlag()}/>
@@ -85,6 +90,8 @@ export default function LessonLevel(props){
         lessonOver
         ? 
         <>
+        {updateAchievements()}
+        <h2>You got {correctCount} answers correct!</h2>
         <Question>That's all the learning we have for you!</Question>
         <Button onClick={props.resetLessons}>To Lessons</Button>
         </>
