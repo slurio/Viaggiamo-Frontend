@@ -21,8 +21,20 @@
   }
 }
 
-#logo{
-  animation: rotate 36s infinite linear;
+.logoContainer{
+  display: grid;
+}
+.logoContainer img:nth-child(1) {
+  margin: auto;
+  grid-row: 1;
+  grid-column: 1;
+  justify-self: stretch;
+  animation: rotate 20s infinite linear;
+}
+.logoContainer img:nth-child(2) {
+  margin: auto;
+  grid-row: 1;
+  grid-column: 1;
 }
 
 .speechoutput{
