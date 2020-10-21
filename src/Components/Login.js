@@ -15,8 +15,8 @@ function Login(props){
     <Container>
       {/* <Img id="logo" style={{maxWidth: "35vw", maxHeight: "35vh", marginLeft: "auto", marginRight: "auto" }} src={globe} alt="" /> */}     
       <div class="logoContainer">
-        <Img id="plane" style={{maxWidth: "30vw", maxHeight: "80vh" }} src={plane} alt="" />
-        <Img id="world" style={{maxWidth: "35vw", maxHeight: "35vh"}} src={world} alt="" />      
+        <Img id="plane" style={{maxWidth: "35vw", maxHeight: "60vh" }} src={plane} alt="" />
+        <Img id="world" style={{maxWidth: "33vw", maxHeight: "33vh"}} src={world} alt="" />      
       </div>       
       <Title>VIAGGIAMO</Title>
       <Form onSubmit={login}>
@@ -35,7 +35,7 @@ const Container = styled.div`
   align-items: center;
   justify-content: center;
   height: 100vh;
-  margin: 21.6%;
+  margin: 24%;
   `
 const Label = styled.label `
   letter-spacing: 2px;
