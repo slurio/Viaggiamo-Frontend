@@ -1,6 +1,8 @@
 import React from 'react'
 import styled from 'styled-components'
 import globe from '../images/worldlogo.png'
+import world from '../images/world.png'
+import plane from '../images/whiteplane.png'
 
 
 function Login(props){ 
@@ -10,7 +12,11 @@ function Login(props){
   }
   return(
     <Container>
-      <Img id="logo" style={{maxWidth: "35vw", maxHeight: "35vh", marginLeft: "auto", marginRight: "auto" }} src={globe} alt="" />
+      {/* <Img id="logo" style={{maxWidth: "35vw", maxHeight: "35vh", marginLeft: "auto", marginRight: "auto" }} src={globe} alt="" /> */}     
+      <div class="logoContainer">
+        <Img id="plane" style={{ }} src={plane} alt="" />
+        <Img id="world" style={{}} src={world} alt="" />      
+      </div>       
       <Title>VIAGGIAMO</Title>
       <Form onSubmit={login}>
         <Label>Username </Label>
