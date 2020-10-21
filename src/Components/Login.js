@@ -14,7 +14,7 @@ function Login(props){
   return(
     <Container>
       {/* <Img id="logo" style={{maxWidth: "35vw", maxHeight: "35vh", marginLeft: "auto", marginRight: "auto" }} src={globe} alt="" /> */}     
-      <div class="logoContainer">
+      <div className="logoContainer">
         <Img id="plane" style={{maxWidth: "35vw", maxHeight: "60vh" }} src={plane} alt="" />
         <Img id="world" style={{maxWidth: "33vw", maxHeight: "33vh"}} src={world} alt="" />      
       </div>       

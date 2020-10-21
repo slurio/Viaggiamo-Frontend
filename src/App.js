@@ -61,6 +61,10 @@ function App() {
 
   function logout() {
     setCurrentUser('')
+    setCategories('')
+    setSelectedCategory('')
+    setMessage(false)
+    setMessageContent('')
   }
 
   function saveMessage(category, message) {
@@ -134,7 +138,7 @@ function App() {
         : <>
             <Navbar logout={logout} />
             <Route path="/" exact render={() => <UserProfile updateProfile={updateProfile} currentUser={currentUser}/>} />
-            <Route path="/speech" render={() => <SpeechText saveMessage={saveMessage} voices={voices} categories={currentUser.categories}/>}  />
+            <Route path="/speech" render={() => <SpeechText saveMessage={saveMessage} voices={voices} categories={categories}/>}  />
             <Route path="/messages" render={() => <Message handleDeletedMessage={handleDeletedMessage} handleUpdatedMessage={handleUpdatedMessage} renderTextChange={renderTextChange} renderMessage={renderMessage} categories={categories} voices={voices} categorySelected={categorySelected} message={message} messageContent={messageContent} renderSelect={renderSelect}/>}/>
             <Route path="/lessons" render={() => <Lessons />} />
             <Route path="/endless" render={() => <EndlessRun updateAchievements={updateAchievements}/>} />

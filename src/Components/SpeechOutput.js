@@ -158,7 +158,7 @@ class SpeechOutput extends React.Component {
           </Form.Row>
 
           <Form.Group controlId="text.ControlInput2">
-              <Form.Control readOnly size="lg" as="textarea" rows="8" placeholder="Translated text will appear here :)" name="translateText" value={this.props.translatedtext}/>
+              <Form.Control style={{backgroundColor: "#DCDCDC	"}} readOnly size="lg" as="textarea" rows="8" placeholder="Translated text will appear here" name="translateText" value={this.props.translatedtext}/>
           </Form.Group>
 
           <Form.Row>
