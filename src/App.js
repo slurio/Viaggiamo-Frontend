@@ -14,7 +14,16 @@ function App() {
   let [currentUser, setCurrentUser] = useState('')
   let [categories, setCategories] = useState('')
   let [voices, setVoices] = useState('')
-  let [selectedCategory, setSelectedCategory] = useState('')
+  let [categorySelected, setSelectedCategory] = useState('')
+  let [message, setMessage] = useState(false)
+  let [messageContent, setMessageContent] = useState('')
+
+  function renderSelect(category) {
+    debugger
+    setSelectedCategory(category)
+    setMessage(false)
+    setMessageContent("")
+  }
 
   useEffect(() => {
     window.speechSynthesis.onvoiceschanged = () => {
@@ -82,12 +91,13 @@ function App() {
           let index = updatedCategories.indexOf(oldCategory)
           updatedCategories[index] = category
           setCategories(updatedCategories)
-          // setSelectedCategory(oldCategory.title)
         }else {
           let updatedCategories = [category,...currentUser.categories]
           setCategories(updatedCategories)
-          // setSelectedCategory(category.title)
         }
+        setSelectedCategory(category.title)
+        setMessage(message)
+        setMessageContent(message.content)
       })
   }
 
@@ -108,6 +118,24 @@ function App() {
       .then(data=> setCurrentUser(data))
   }
 
+  function renderMessage(messageSelected) {
+    setMessage(messageSelected)
+    setMessageContent(messageSelected.content)
+  }
+
+  function renderTextChange(text) {
+    setMessageContent(text)
+  }
+
+  function handleUpdatedMessage(message) {
+    setMessageContent(message.content)
+    setMessage(message)
+  }
+
+  function handleDeletedMessage() {
+    setMessage("")
+    setMessageContent("")
+  }
 
   return (
     <div className="App">
@@ -117,7 +145,7 @@ function App() {
             <Navbar logout={logout} />
             <Route path="/" exact render={() => <UserProfile updateProfile={updateProfile} currentUser={currentUser}/>} />
             <Route path="/speech" render={() => <SpeechText saveMessage={saveMessage} voices={voices} categories={currentUser.categories}/>}  />
-            <Route path="/messages" render={() => <Message categories={categories} voices={voices}/>}/>
+            <Route path="/messages" render={() => <Message handleDeletedMessage={handleDeletedMessage} handleUpdatedMessage={handleUpdatedMessage} renderTextChange={renderTextChange} renderMessage={renderMessage} categories={categories} voices={voices} categorySelected={categorySelected} message={message} messageContent={messageContent} renderSelect={renderSelect}/>}/>
             <Route path="/lessons" render={() => <Lessons updateAchievements={updateAchievements}/>} />
             <Route path="/endless" render={() => <EndlessRun />} />
           </>

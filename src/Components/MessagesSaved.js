@@ -10,9 +10,10 @@ function MessagesSaved(props){
   }
 
   const renderMessageCards = () => {
-    if(props.categorySelected === ""){
+   if(props.categorySelected === ""){
       return props.categories[0].messages.map(message=> <MessageCard key={message.id} message={message} renderMessage={props.renderMessage}/>)
     } else {
+      // document.querySelector('.selectCategory').value = props.selectedCategory
       let selectedCategory = props.categories.find(category => props.categorySelected === category.title )
       return selectedCategory.messages.map(message=> <MessageCard key={message.id} message={message} renderMessage={props.renderMessage}/>)
     }
@@ -25,7 +26,7 @@ function MessagesSaved(props){
   return(
     <Container>
         <Header>SAVED MESSAGES</Header>
-        <Select name="categories" onChange={renderSelect}>
+        <Select value={props.categorySelected} className="selectCategory" name="categories" onChange={renderSelect}>
           {renderOptions()}
         </Select>
         {renderMessageCards()}

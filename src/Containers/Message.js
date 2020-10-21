@@ -6,30 +6,36 @@ import styled from 'styled-components'
 export default class Message extends React.Component {
   state = {
     categories: this.props.categories,
-    categorySelected: "",
-    message: "",
-    messageContent: ""
+    // categorySelected: "",
+    // message: "",
+    // messageContent: ""
   }
 
+  // renderSelect = (category) => {
+  //   this.setState({
+  //     categorySelected: category,
+  //     message: false,
+  //     messageContent: "",
+  //   })
+  // }
+
   renderSelect = (category) => {
-    this.setState({
-      categorySelected: category,
-      message: false,
-      messageContent: "",
-    })
+    this.props.renderSelect(category)
   }
 
   renderMessage = (messageSelected) => {
-    this.setState({
-      message: messageSelected,
-      messageContent: messageSelected.content
-    })
+    this.props.renderMessage(messageSelected)
+    // this.setState({
+    //   message: messageSelected,
+    //   messageContent: messageSelected.content
+    // })
   }
 
   renderTextChange = (text) => {
-    this.setState({
-      messageContent: text
-    })
+    this.props.renderTextChange(text)
+    // this.setState({
+    //   messageContent: text
+    // })
   }
 
   saveMessage = () => {
@@ -56,11 +62,16 @@ export default class Message extends React.Component {
     let oldMessage = selectedCategory.messages.find(el => el.id === message.id)
     let index = selectedCategory.messages.indexOf(oldMessage)
     selectedCategory.messages[index] = message
+
+    this.props.handleUpdatedMessage(message)
     this.setState({
-      categories: categories,
-      message: message,
-      messageContent: message.content
+      categories: categories
     })
+    // this.setState({
+    //   categories: categories,
+    //   message: message,
+    //   messageContent: message.content
+    // })
   }
 
   deleteMessage = (messageObj) => {
@@ -78,22 +89,25 @@ export default class Message extends React.Component {
         let index = selectedCategory.messages.indexOf(message)
         selectedCategory.messages.splice(index, 1)
         
+        this.props.handleDeletedMessage()
         this.setState({
           categories: categories,
-          message: "",
-          messageContent: "",
         })
+        // this.setState({
+        //   categories: categories,
+        //   message: "",
+        //   messageContent: "",
+        // })
       }) 
   }
 
   render() {
-
     return(
       <Container>
         <LeftBar>
-          <MessagesSaved updatedMessage={this.state.message} renderSelect={this.renderSelect} renderMessage={this.renderMessage} categories={this.props.categories} categorySelected={this.state.categorySelected}/>
+          <MessagesSaved updatedMessage={this.props.message} renderSelect={this.renderSelect} renderMessage={this.renderMessage} categories={this.props.categories} categorySelected={this.props.categorySelected}/>
         </LeftBar>
-        <MessageForm deleteMessage={this.deleteMessage} saveMessage={this.saveMessage} renderTextChange={this.renderTextChange} message={this.state.message} content={this.state.messageContent}/>
+        <MessageForm deleteMessage={this.deleteMessage} saveMessage={this.saveMessage} renderTextChange={this.renderTextChange} message={this.props.message} content={this.props.messageContent}/>
       </Container>
     )
   }

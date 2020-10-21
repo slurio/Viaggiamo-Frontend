@@ -45,7 +45,6 @@ class MessageForm extends React.Component {
   }
 
   renderLanguage = () => {
- 
     if(this.props.message.language === "en"){
       return 'English'
     } else if(this.props.message.language === "fr"){
@@ -65,7 +64,7 @@ class MessageForm extends React.Component {
   }
 
   render() {
-    console.log(this.props.message)
+    console.log('message :', this.props.message)
     return(
       this.props.message ?   
         <div className="MessageForm">
