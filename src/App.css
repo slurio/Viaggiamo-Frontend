@@ -21,23 +21,18 @@
   }
 }
 
-/* #logoContainer{
-  max-width: 10vw;
-  max-height: 35vh;
-} */
-
 #plane{
-  position: absolute;
-  top: 13%;
-  left: 30%;
+  /* position: absolute; */
+  /* top: 13%;
+  left: 30%; */
   z-index: 3;
   animation: rotate 5s infinite linear;
 }
 
 #world{
-  position: absolute;
-  top: 26%;
-  left: 34%;
+  /* position: absolute; */
+  /* top: 26%;
+  left: 34%; */
   z-index: 1;
 }
 

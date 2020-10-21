@@ -14,7 +14,7 @@ function Login(props){
     <Container>
       {/* <Img id="logo" style={{maxWidth: "35vw", maxHeight: "35vh", marginLeft: "auto", marginRight: "auto" }} src={globe} alt="" /> */}     
       <div class="logoContainer">
-        <Img id="plane" style={{ }} src={plane} alt="" />
+        <Img id="plane" style={{}} src={plane} alt="" />
         <Img id="world" style={{}} src={world} alt="" />      
       </div>       
       <Title>VIAGGIAMO</Title>
