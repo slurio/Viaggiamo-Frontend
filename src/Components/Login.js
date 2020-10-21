@@ -44,17 +44,21 @@ const Title = styled.h2`
 const Img = styled.img`
   max-width: 80%;
   border-radius: 30px;
+  @media (max-width: 768px) {
+    min-width: 50vw;
+    height: auto;
+    margin-bottom: 20px
+  }
   `
 
 const Form = styled.form` 
   color: #EBEBEB;
   display: flex;
   flex-direction: column;
-  margin-top: 30px;
-  margin-bottom: 50px;
+  margin: 30px 40px;
   padding: 20px;
   background-color: #272727;
-  font-size: calc(8px + 2vmin);
+  font-size: calc(10px + 2vmin);
   border-radius: 10px;
   width: 60vw;
   box-shadow: 0px 8px 8px 2px #1c1c1c;
