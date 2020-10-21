@@ -60,6 +60,7 @@ const FlagContainer = styled.div`
   & img {
     margin: 10px;
     border-radius: 10px;
+    cursor: pointer;
   }
   `
 

@@ -128,6 +128,9 @@ const Question = styled.h2`
 const MultiAnswer = styled.li`
   list-style-type: none;
   margin: 10px;
+  &:hover {
+    cursor: pointer;
+  }
   `
 
 const Button = styled.button`
