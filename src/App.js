@@ -18,13 +18,6 @@ function App() {
   let [message, setMessage] = useState(false)
   let [messageContent, setMessageContent] = useState('')
 
-  function renderSelect(category) {
-    debugger
-    setSelectedCategory(category)
-    setMessage(false)
-    setMessageContent("")
-  }
-
   useEffect(() => {
     window.speechSynthesis.onvoiceschanged = () => {
       return setVoices(window.speechSynthesis.getVoices()) 
@@ -71,7 +64,6 @@ function App() {
   }
 
   function saveMessage(category, message) {
-
     const options = {
       method: "POST",
       headers: {
@@ -80,24 +72,15 @@ function App() {
       },
       body: JSON.stringify({message, category, currentUser})
     }
-
     fetch('http://localhost:3001/categories/', options)
       .then(resp=>resp.json())
-      .then(category=> {
-        
-        if(categories.find(cat => category.title === cat.title )){
-          let updatedCategories = [...currentUser.categories]
-          let oldCategory = updatedCategories.find(cat => category.title === cat.title )
-          let index = updatedCategories.indexOf(oldCategory)
-          updatedCategories[index] = category
-          setCategories(updatedCategories)
-        }else {
-          let updatedCategories = [category,...currentUser.categories]
-          setCategories(updatedCategories)
-        }
-        setSelectedCategory(category.title)
-        setMessage(message)
-        setMessageContent(message.content)
+      .then(categories => { 
+        setCategories(categories)
+        let selectedCategory = categories.find(updatedCategory => updatedCategory.title === category.title)
+        setSelectedCategory(selectedCategory.title)
+        let newMessage = selectedCategory.messages.find(updatedMessage => updatedMessage.description === message.description)
+        setMessage(newMessage)
+        setMessageContent(newMessage.content)
       })
   }
 
@@ -137,6 +120,12 @@ function App() {
     setMessageContent("")
   }
 
+  function renderSelect(category) {
+    setSelectedCategory(category)
+    setMessage(false)
+    setMessageContent("")
+  }
+
   return (
     <div className="App">
       {currentUser === '' 
@@ -154,7 +143,7 @@ function App() {
   );
 }
 
-export default  withRouter(App);
+export default withRouter(App);
 
 
 // button backgrounds: #333333

@@ -5,19 +5,8 @@ import styled from 'styled-components'
 
 export default class Message extends React.Component {
   state = {
-    categories: this.props.categories,
-    // categorySelected: "",
-    // message: "",
-    // messageContent: ""
+    categories: "",
   }
-
-  // renderSelect = (category) => {
-  //   this.setState({
-  //     categorySelected: category,
-  //     message: false,
-  //     messageContent: "",
-  //   })
-  // }
 
   renderSelect = (category) => {
     this.props.renderSelect(category)
@@ -25,17 +14,10 @@ export default class Message extends React.Component {
 
   renderMessage = (messageSelected) => {
     this.props.renderMessage(messageSelected)
-    // this.setState({
-    //   message: messageSelected,
-    //   messageContent: messageSelected.content
-    // })
   }
 
   renderTextChange = (text) => {
     this.props.renderTextChange(text)
-    // this.setState({
-    //   messageContent: text
-    // })
   }
 
   saveMessage = () => {
@@ -45,10 +27,10 @@ export default class Message extends React.Component {
         "content-type": "application/json",
         "accept": "application/json"
       },
-      body: JSON.stringify({content: this.state.messageContent})
+      body: JSON.stringify({content: this.props.messageContent})
     }
 
-    fetch('http://localhost:3001/messages/' + this.state.message.id, options)
+    fetch('http://localhost:3001/messages/' + this.props.message.id, options)
       .then(resp=>resp.json())
       .then(updatedMessage=> {
         this.updateMessages(updatedMessage)
@@ -56,22 +38,18 @@ export default class Message extends React.Component {
   }
 
   updateMessages = (message) => {
-    let categories = this.state.categories  
+    let categories = this.props.categories  
     let messageCategory = message.category.title
     let selectedCategory = categories.find(category => messageCategory === category.title )
     let oldMessage = selectedCategory.messages.find(el => el.id === message.id)
     let index = selectedCategory.messages.indexOf(oldMessage)
     selectedCategory.messages[index] = message
-
+   
     this.props.handleUpdatedMessage(message)
     this.setState({
       categories: categories
     })
-    // this.setState({
-    //   categories: categories,
-    //   message: message,
-    //   messageContent: message.content
-    // })
+
   }
 
   deleteMessage = (messageObj) => {
@@ -82,7 +60,7 @@ export default class Message extends React.Component {
     fetch(`http://localhost:3001/messages/${messageObj.id}`, options)
       .then(resp=>resp.json())
       .then(deleted => {
-        let categories = this.props.categories  
+        let categories = this.props.categories
         let messageCategory = deleted.category.title
         let selectedCategory = categories.find(category => messageCategory === category.title )
         let message = selectedCategory.messages.find(el => el.id === deleted.id)
@@ -93,11 +71,6 @@ export default class Message extends React.Component {
         this.setState({
           categories: categories,
         })
-        // this.setState({
-        //   categories: categories,
-        //   message: "",
-        //   messageContent: "",
-        // })
       }) 
   }
 

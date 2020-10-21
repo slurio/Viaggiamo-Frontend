@@ -8,8 +8,8 @@ function MessageCard(props){
     }
 
     return(
-        <Title>
-            <p onClick={renderMessage}>{props.message.description}</p>
+        <Title onClick={renderMessage}>
+            <p>{props.message.description}</p>
         </Title>
     )
 }

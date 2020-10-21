@@ -1,7 +1,6 @@
 import React from 'react'
 import styled from 'styled-components'
 import globe from '../images/worldlogo.png'
-import oraqleScript from '../fonts/OraqleScript/OraqleScript.woff';
 
 
 function Login(props){ 
@@ -11,7 +10,7 @@ function Login(props){
   }
   return(
     <Container>
-      <Img style={{maxWidth: "35vw", maxHeight: "35vh", marginLeft: "auto", marginRight: "auto" }} src={globe} alt="" />
+      <Img id="logo" style={{maxWidth: "35vw", maxHeight: "35vh", marginLeft: "auto", marginRight: "auto" }} src={globe} alt="" />
       <Title>VIAGGIAMO</Title>
       <Form onSubmit={login}>
         <Label>Username </Label>

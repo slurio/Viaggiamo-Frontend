@@ -64,7 +64,6 @@ class MessageForm extends React.Component {
   }
 
   render() {
-    console.log('message :', this.props.message)
     return(
       this.props.message ?   
         <div className="MessageForm">
