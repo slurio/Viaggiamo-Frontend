@@ -58,7 +58,7 @@ export default function LessonsStart(props){
 
 const FlagContainer = styled.div`
   & img {
-    margin: 15px;
+    margin: 10px;
     border-radius: 10px;
   }
   `

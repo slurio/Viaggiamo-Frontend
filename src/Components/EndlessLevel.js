@@ -82,7 +82,7 @@ export default function LessonLevel(props){
         <>
           {updateAchievements()}
           <Question>That's the end of your run! You ended with {correctCount} correct answers!</Question>
-          <Button onClick={props.resetLessons}>Try Again</Button>
+          <Button onClick={props.resetEndless}>Try Again</Button>
         </>
         :
         <>
@@ -146,7 +146,7 @@ const Button = styled.button`
   font-size: 20px;
   border: none;
   border-radius: 10px;
-  padding: 6px 0;
+  padding: 6px 20px;
 
   &:hover {
     color: #272727;

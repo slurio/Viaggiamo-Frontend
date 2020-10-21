@@ -5,31 +5,19 @@ import styled from 'styled-components'
 
 export default class Message extends React.Component {
   state = {
-    categories: this.props.categories,
-    categorySelected: "",
-    message: "",
-    messageContent: ""
+    categories: "",
   }
 
   renderSelect = (category) => {
-    this.setState({
-      categorySelected: category,
-      message: false,
-      messageContent: "",
-    })
+    this.props.renderSelect(category)
   }
 
   renderMessage = (messageSelected) => {
-    this.setState({
-      message: messageSelected,
-      messageContent: messageSelected.content
-    })
+    this.props.renderMessage(messageSelected)
   }
 
   renderTextChange = (text) => {
-    this.setState({
-      messageContent: text
-    })
+    this.props.renderTextChange(text)
   }
 
   saveMessage = () => {
@@ -39,10 +27,10 @@ export default class Message extends React.Component {
         "content-type": "application/json",
         "accept": "application/json"
       },
-      body: JSON.stringify({content: this.state.messageContent})
+      body: JSON.stringify({content: this.props.messageContent})
     }
 
-    fetch('http://localhost:3001/messages/' + this.state.message.id, options)
+    fetch('http://localhost:3001/messages/' + this.props.message.id, options)
       .then(resp=>resp.json())
       .then(updatedMessage=> {
         this.updateMessages(updatedMessage)
@@ -50,17 +38,18 @@ export default class Message extends React.Component {
   }
 
   updateMessages = (message) => {
-    let categories = this.state.categories  
+    let categories = this.props.categories  
     let messageCategory = message.category.title
     let selectedCategory = categories.find(category => messageCategory === category.title )
     let oldMessage = selectedCategory.messages.find(el => el.id === message.id)
     let index = selectedCategory.messages.indexOf(oldMessage)
     selectedCategory.messages[index] = message
+   
+    this.props.handleUpdatedMessage(message)
     this.setState({
-      categories: categories,
-      message: message,
-      messageContent: message.content
+      categories: categories
     })
+
   }
 
   deleteMessage = (messageObj) => {
@@ -71,29 +60,27 @@ export default class Message extends React.Component {
     fetch(`http://localhost:3001/messages/${messageObj.id}`, options)
       .then(resp=>resp.json())
       .then(deleted => {
-        let categories = this.props.categories  
+        let categories = this.props.categories
         let messageCategory = deleted.category.title
         let selectedCategory = categories.find(category => messageCategory === category.title )
         let message = selectedCategory.messages.find(el => el.id === deleted.id)
         let index = selectedCategory.messages.indexOf(message)
         selectedCategory.messages.splice(index, 1)
         
+        this.props.handleDeletedMessage()
         this.setState({
           categories: categories,
-          message: "",
-          messageContent: "",
         })
       }) 
   }
 
   render() {
-
     return(
       <Container>
         <LeftBar>
-          <MessagesSaved updatedMessage={this.state.message} renderSelect={this.renderSelect} renderMessage={this.renderMessage} categories={this.props.categories} categorySelected={this.state.categorySelected}/>
+          <MessagesSaved updatedMessage={this.props.message} renderSelect={this.renderSelect} renderMessage={this.renderMessage} categories={this.props.categories} categorySelected={this.props.categorySelected}/>
         </LeftBar>
-        <MessageForm deleteMessage={this.deleteMessage} saveMessage={this.saveMessage} renderTextChange={this.renderTextChange} message={this.state.message} content={this.state.messageContent}/>
+        <MessageForm deleteMessage={this.deleteMessage} saveMessage={this.saveMessage} renderTextChange={this.renderTextChange} message={this.props.message} content={this.props.messageContent}/>
       </Container>
     )
   }
@@ -104,7 +91,6 @@ const Container = styled.div`
   flex-direction: row;
   align-items: center;
   justify-content: space-between;
-  height: 100vh;
   `
 const LeftBar = styled.div`
   background-color: #EBEBEB;

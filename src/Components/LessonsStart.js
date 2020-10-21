@@ -18,7 +18,7 @@ export default function LessonsStart(props){
     document.querySelectorAll('.flagChoice').forEach(e =>{
       e.style.cssText = ''
     })
-    e.target.style.cssText = "box-shadow: inset 0 0 10px 10px #A594F9;"
+    e.target.style.cssText = "transform: scale(1.5); box-shadow: 0px 8px 8px 2px #1c1c1c;"
   }
 
   function getFlag(flag){
@@ -41,14 +41,14 @@ export default function LessonsStart(props){
       <label style={{fontWeight: 'bold', marginBottom: '15px'}}>Select a language to begin!</label>
 
       <div style={{display: 'flex', flexDirection: 'column', justifyContent: 'center', alignItems: 'center'}}>
-        <FlagDiv>
+        <FlagContainer>
           <img className='flagChoice' onClick={langChange} id='French' src={getFlag('French')} alt='' />
           <img className='flagChoice' onClick={langChange} id='Spanish' src={getFlag('Spanish')} alt='' />
-        </FlagDiv>
-        <FlagDiv>
+        </FlagContainer>
+        <FlagContainer>
           <img className='flagChoice' onClick={langChange} id='German' src={getFlag('German')} alt='' />
           <img className='flagChoice' onClick={langChange} id='Italian' src={getFlag('Italian')} alt='' />
-        </FlagDiv>
+        </FlagContainer>
       </div>
 
       <Button onClick={startCourse}>Start Course</Button>
@@ -78,11 +78,9 @@ const Button = styled.button`
   }
   `
 
-const FlagDiv = styled.div`
-  display: flex;
+const FlagContainer = styled.div`
   & img {
-    margin: 5px;
-    padding: 4px;
+    margin: 10px;
     border-radius: 10px;
   }
   `

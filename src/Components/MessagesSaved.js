@@ -10,7 +10,8 @@ function MessagesSaved(props){
   }
 
   const renderMessageCards = () => {
-    if(props.categorySelected === ""){
+   if(!props.categories[0]){return}
+   if (props.categorySelected === ""){
       return props.categories[0].messages.map(message=> <MessageCard key={message.id} message={message} renderMessage={props.renderMessage}/>)
     } else {
       let selectedCategory = props.categories.find(category => props.categorySelected === category.title )
@@ -24,8 +25,8 @@ function MessagesSaved(props){
 
   return(
     <Container>
-        <Header>Saved Messages</Header>
-        <Select name="categories" onChange={renderSelect}>
+        <Header>SAVED MESSAGES</Header>
+        <Select value={props.categorySelected} className="selectCategory" name="categories" onChange={renderSelect}>
           {renderOptions()}
         </Select>
         {renderMessageCards()}
@@ -40,7 +41,7 @@ const Header = styled.header `
   color: #EBEBEB;
   font-weight: bold;
   letter-spacing: 4px;
-  font-size: calc(6px + 2vmin);
+  font-size: calc(4px + 2vmin);
 `
 
 const Select = styled.select `
@@ -51,10 +52,11 @@ const Select = styled.select `
 `
 
 const Container = styled.div`
-  width: 35vh;
+  width: 38vh;
   letter-spacing: 3px; 
   height: 100vh;
-  background-color: #1e1e1e;
+  background-color: #272727;
+  box-shadow: 0px 8px 8px 2px #1c1c1c;
   color: #EBEBEB;
   font-size: calc(8px + 2vmin);
   display: flex;

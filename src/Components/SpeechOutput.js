@@ -4,7 +4,6 @@ import { Form, Col, Modal} from "react-bootstrap";
 
 class SpeechOutput extends React.Component {
   state={
-    // returnValue: '',
     voiceSpeed: 0.8,
     lang: 'en',
     selectedVoice: 'Alex',
@@ -73,21 +72,8 @@ class SpeechOutput extends React.Component {
       lang: langValue
     })
 
-    //test
-    this.props.handleTranslationLan(langValue)
+    this.props.handletranslationlan(langValue)
   }
-
-  // translate = () => {
-  //   let sourceLang = this.props.inputLang
-  //   let sourceText = this.props.text
-  //   let targetLang = this.state.lang
-
-  //   fetch("https://translate.googleapis.com/translate_a/single?client=gtx&sl=" + sourceLang + "&tl=" + targetLang + "&dt=t&q=" + encodeURI(sourceText))
-  //   .then(resp=>resp.json())
-  //   .then(data=> this.setState({
-  //     returnValue: data[0][0][0]
-  //   }))
-  // }
 
   showSaveForm = (e) => {
     this.setState({
@@ -109,7 +95,7 @@ class SpeechOutput extends React.Component {
   saveMessage = (e) => {
     e.preventDefault()
 
-    let text = this.props.translatedText
+    let text = this.props.translatedtext
     let language = this.state.lang
     let voice = this.state.selectedVoice
     let title
@@ -131,7 +117,7 @@ class SpeechOutput extends React.Component {
       content: text,
     }
 
-    this.props.saveMessage(category, message)
+    this.props.savemessage(category, message)
     this.props.history.push("/messages")
   }
 
@@ -143,7 +129,7 @@ class SpeechOutput extends React.Component {
 
   render() {
     return (
-      <div className="SpeechOutput">
+      <div className="speechoutput">
          <Form onSubmit={this.renderVoice}>
           <Form.Row>
 
@@ -172,13 +158,10 @@ class SpeechOutput extends React.Component {
           </Form.Row>
 
           <Form.Group controlId="text.ControlInput2">
-              <Form.Control readOnly as="textarea" rows="8" placeholder="Translated text will appear here :)" name="translateText" value={this.props.translatedText}/>
+              <Form.Control readOnly size="lg" as="textarea" rows="8" placeholder="Translated text will appear here :)" name="translateText" value={this.props.translatedtext}/>
           </Form.Group>
 
           <Form.Row>
-            {/* <Form.Group controlId="button1">  
-                <button className="translateButton" onClick={this.translate}type="button" name="translate" variant="success" size="">Translate</button>
-            </Form.Group> */}
 
             <Form.Group controlId="button2">
               <button className="hearOutLoudButton" type="submit">Hear Out Loud</button>
@@ -197,7 +180,7 @@ class SpeechOutput extends React.Component {
             {...this.props}
             centered
           >
-            <Form onSubmit={this.saveMessage}>
+            <Form className="SaveForm" onSubmit={this.saveMessage}>
               <Modal.Header closeButton onClick={this.closeForm}>
                 <Modal.Title>Save Message</Modal.Title>
               </Modal.Header>

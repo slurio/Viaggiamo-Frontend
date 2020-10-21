@@ -1,7 +1,6 @@
 import React, { useState } from 'react'
 import styled from 'styled-components'
 import { NavLink } from 'react-router-dom';
-import oraqleScript from '../fonts/OraqleScript/OraqleScript.woff';
 
 function Navbar(props){
 
@@ -39,7 +38,6 @@ function Navbar(props){
 export default Navbar
 
 const Container = styled.div`
-  padding: 20px;
   display: flex;
   top: 0;
   background-color: #272727;
@@ -48,6 +46,7 @@ const Container = styled.div`
   box-shadow: 0px 8px 8px 2px #1c1c1c;
   @media (min-width: 768px) {
     justify-content: space-around;
+    padding: 20px;
     #icon {
       display: none;
     }
@@ -61,7 +60,6 @@ const Container = styled.div`
       background-image: linear-gradient(#272727 10%, #7468ad); 
       text-align: center;
       width: 100vw;
-      padding-bottom: 0px;
     }
   }
   `
@@ -84,6 +82,9 @@ const Top = styled.div`
   }
   @media (min-width: 768px) {
     width: 20vw;
+  }
+  @media (max-width: 768px) {
+    padding: 20px;
   }
   `
 

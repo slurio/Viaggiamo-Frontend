@@ -39,8 +39,7 @@ export default class SpeechText extends React.Component {
     return(
       <Container>
         <SpeechInput handleTranslatedText={this.handleTranslatedText} translationLang={this.state.translationLang} voices={this.props.voices} text={this.state.text} renderChange={this.renderChange} renderInputLang={this.renderInputLang}/>
-        {/* <SpeechOutput handleTranslationLan={this.handleTranslationLan} saveMessage={this.props.saveMessage} categories={this.props.categories} voices={this.props.voices} text={this.state.text} inputLang={this.state.inputLang}/> */}
-        <SpeechOutput translatedText={this.state.translatedText} handleTranslationLan={this.handleTranslationLan} saveMessage={this.props.saveMessage} categories={this.props.categories} voices={this.props.voices} text={this.state.text} inputLang={this.state.inputLang}/>
+        <SpeechOutput translatedtext={this.state.translatedText} handletranslationlan={this.handleTranslationLan} savemessage={this.props.saveMessage} categories={this.props.categories} voices={this.props.voices} text={this.state.text} inputlang={this.state.inputLang}/>
 
       </Container>
     )

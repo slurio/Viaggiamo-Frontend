@@ -11,10 +11,12 @@ import Login from './Components/Login'
 import Navbar from './Components/Navbar'
 
 function App() {
-  let [currentUser, setCurrentUser] = useState('s')
+  let [currentUser, setCurrentUser] = useState('')
   let [categories, setCategories] = useState('')
   let [voices, setVoices] = useState('')
-  let [selectedCategory, setSelectedCategory] = useState('')
+  let [categorySelected, setSelectedCategory] = useState('')
+  let [message, setMessage] = useState(false)
+  let [messageContent, setMessageContent] = useState('')
 
   useEffect(() => {
     window.speechSynthesis.onvoiceschanged = () => {
@@ -62,7 +64,6 @@ function App() {
   }
 
   function saveMessage(category, message) {
-
     const options = {
       method: "POST",
       headers: {
@@ -71,23 +72,15 @@ function App() {
       },
       body: JSON.stringify({message, category, currentUser})
     }
-
     fetch('http://localhost:3001/categories/', options)
       .then(resp=>resp.json())
-      .then(category=> {
-        
-        if(categories.find(cat => category.title === cat.title )){
-          let updatedCategories = [...currentUser.categories]
-          let oldCategory = updatedCategories.find(cat => category.title === cat.title )
-          let index = updatedCategories.indexOf(oldCategory)
-          updatedCategories[index] = category
-          setCategories(updatedCategories)
-          // setSelectedCategory(oldCategory.title)
-        }else {
-          let updatedCategories = [category,...currentUser.categories]
-          setCategories(updatedCategories)
-          // setSelectedCategory(category.title)
-        }
+      .then(categories => { 
+        setCategories(categories)
+        let selectedCategory = categories.find(updatedCategory => updatedCategory.title === category.title)
+        setSelectedCategory(selectedCategory.title)
+        let newMessage = selectedCategory.messages.find(updatedMessage => updatedMessage.description === message.description)
+        setMessage(newMessage)
+        setMessageContent(newMessage.content)
       })
   }
 
@@ -108,6 +101,31 @@ function App() {
       .then(data=> setCurrentUser(data))
   }
 
+  function renderMessage(messageSelected) {
+    setMessage(messageSelected)
+    setMessageContent(messageSelected.content)
+  }
+
+  function renderTextChange(text) {
+    setMessageContent(text)
+  }
+
+  function handleUpdatedMessage(message) {
+    setMessageContent(message.content)
+    setMessage(message)
+  }
+
+  function handleDeletedMessage() {
+    setMessage("")
+    setMessageContent("")
+  }
+
+  function renderSelect(category) {
+    console.log(category)
+    setSelectedCategory(category)
+    setMessage(false)
+    setMessageContent("")
+  }
 
   return (
     <div className="App">
@@ -117,7 +135,7 @@ function App() {
             <Navbar logout={logout} />
             <Route path="/" exact render={() => <UserProfile updateProfile={updateProfile} currentUser={currentUser}/>} />
             <Route path="/speech" render={() => <SpeechText saveMessage={saveMessage} voices={voices} categories={currentUser.categories}/>}  />
-            <Route path="/messages" render={() => <Message categories={categories} voices={voices}/>}/>
+            <Route path="/messages" render={() => <Message handleDeletedMessage={handleDeletedMessage} handleUpdatedMessage={handleUpdatedMessage} renderTextChange={renderTextChange} renderMessage={renderMessage} categories={categories} voices={voices} categorySelected={categorySelected} message={message} messageContent={messageContent} renderSelect={renderSelect}/>}/>
             <Route path="/lessons" render={() => <Lessons />} />
             <Route path="/endless" render={() => <EndlessRun updateAchievements={updateAchievements}/>} />
           </>
@@ -126,10 +144,11 @@ function App() {
   );
 }
 
-export default  withRouter(App);
+export default withRouter(App);
 
 // button backgrounds: #333333
 // button text color: #A594F9
+
 // button background hover: #A594F9
 // button text color: #272727 || #EBEBEB
 

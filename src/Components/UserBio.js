@@ -70,6 +70,8 @@ const Username = styled.h2`
 
 const Bio = styled.p`
   margin: 20px;
+  word-wrap: normal;
+  text-align: center;
   `
 
 const Form = styled.form`

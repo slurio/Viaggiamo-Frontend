@@ -8,41 +8,55 @@
   display: flex;
   flex-direction: column;
   overflow-x: hidden;
-  /* align-items: center; */
   font-size: calc(10px + 2vmin);
   color: white;
 }
 
-.SpeechOutput{
+@keyframes rotate {
+  from {
+    transform: rotate(0deg);
+  }
+  to { 
+    transform: rotate(360deg);
+  }
+}
+
+#logo{
+  animation: rotate 36s infinite linear;
+}
+
+.speechoutput{
   width: 45%;
   color: #EBEBEB;
-  background-color: #1e1e1e;
+  background-color: #272727;
   padding: 25px;
   border-radius: 25px;
   margin: 10px;
+  box-shadow: 0px 8px 8px 2px #1c1c1c;
 }
 
 .SpeechInput{
   width: 45%;
   color: #EBEBEB;
-  background-color: #1e1e1e;
+  background-color: #272727;
   padding: 25px;
   border-radius: 25px;
   margin: 10px;
+  box-shadow: 0px 8px 8px 2px #1c1c1c;
 }
 
 .hearOutLoudButton{
   margin-left: 20px;
   font-weight: bold;
   color: #A594F9;
-  background-color: transparent;
-  border: 2px solid #A594F9;
+  background-color: #333333;
+  border: 2px solid #333333;
   border-radius: 10px;
   padding: 6px;
   font-size: calc(4px + 2vmin);
 }
 .hearOutLoudButton:hover{
-  color: white;
+  color: #272727;
   background-color: #A594F9;
   border: 2px solid #A594F9;
   cursor: pointer;
@@ -61,8 +75,8 @@
 
 .translateButton:hover{
   color:white;
-  background-color:transparent;
-  border: 2px solid white;
+  background-color: #A594F9;
+  border: 2px solid #A594F9;
   cursor: pointer;
 }
 
@@ -70,15 +84,15 @@
   margin-left: 20px;
   font-weight: bold;
   color: #A594F9;
-  background-color: transparent;
-  border: 2px solid #A594F9;
+  background-color: #333333;
+  border: 2px solid #333333;
   border-radius: 10px;
   padding: 6px;
   font-size: calc(4px + 2vmin);
 }
 
 .SaveButton:hover{
-  color: white;
+  color: #272727;
   background-color: #A594F9;
   border: 2px solid #A594F9;
   cursor: pointer;
@@ -96,8 +110,8 @@
 
 .MessageForm .hearOutLoudButton:hover{
   color: #EBEBEB;
-  background-color:transparent;
-  border: 2px solid #EBEBEB;
+  background-color: #A594F9;
+  border: 2px solid #A594F9;
   cursor: pointer;
 }
 
@@ -105,22 +119,22 @@
   margin-left: 20px;
   font-weight: bold;
   color: #A594F9;
-  background-color: transparent;
-  border: 2px solid #A594F9;
+  background-color: #333333;
+  border: 2px solid #333333;
   border-radius: 10px;
   padding: 6px;
   font-size: calc(4px + 2vmin);
 }
 
 .DeleteButton:hover{
-  color: #EBEBEB;
+  color: #272727;
   background-color: #A594F9;
   border: 2px solid #A594F9;
   cursor: pointer;
 }
 
 @media(max-width: 768px) {
-  .SpeechOutput {
+  .speechoutput {
     width: 80vw;
   }
   .SpeechInput {
@@ -129,10 +143,11 @@
 } 
 
 .MessageForm{
-  margin: 12%;
+  margin: auto;
   width: 55%;
   color: #EBEBEB;
-  background-color:#1e1e1e;
+  background-color:#272727;
+  box-shadow: 0px 8px 8px 2px #1c1c1c;
   padding: 25px;
   border-radius: 25px;
   font-size: 18px;
@@ -150,17 +165,40 @@
 .ModalSaveButton {
   margin-left: 20px;
   font-weight: bold;
-  color: white;
-  background-color: #A594F9;
-  border: 2px solid #A594F9;
+  color: #A594F9;
+  background-color: #333333;
+  border: 2px solid #333333;
   border-radius: 10px;
   padding: 6px;
   font-size: calc(4px + 2vmin);
 }
 
 .ModalSaveButton:hover{
-  color: #A594F9;
-  background-color:transparent;
+  color: #EBEBEB;
+  background-color:#A594F9;
   border: 2px solid #A594F9;
   cursor: pointer;
+}
+
+.SaveForm {
+  font-weight: bold;
+  background-color: #272727;
+  color: #EBEBEB;
+}
+
+.close {
+  color: white;
+  border: none;
+}
+
+.close:hover {
+  color:  #A594F9;
+}
+
+.SpeechInput svg:hover path{
+  fill: #A594F9 !important;
+}
+
+#stopRecord:hover path{
+  fill: red !important;
 }
