@@ -79,9 +79,6 @@ export default function LessonLevel(props){
     }
   }
 
-  function updateAchievements(){
-    props.updateAchievements(correctCount, props.currentLang)
-  }
 
   return(
     <Container>
@@ -90,7 +87,6 @@ export default function LessonLevel(props){
         lessonOver
         ? 
         <>
-        {updateAchievements()}
         <h2>You got {correctCount} answers correct!</h2>
         <Question>That's all the learning we have for you!</Question>
         <Button onClick={props.resetLessons}>To Lessons</Button>
@@ -135,16 +131,18 @@ const MultiAnswer = styled.li`
   `
 
 const Button = styled.button`
-  margin-top: 5px;
+  margin: 20px 40px;
   font-weight: bold;
-  color: #EBEBEB;
-  background-color: transparent;
-  border: 2px solid #A594F9;
+  color: #A594F9;
+  background-color: #333333;
+  font-size: 20px;
+  border: none;
   border-radius: 10px;
-  padding: 6px;
-  font-size: calc(10px + 2vmin);
-  &:hover{
-    color: #A594F9;
+  padding: 6px 0;
+
+  &:hover {
+    color: #272727;
+    background-color: #A594F9;
     cursor: pointer;
   }
   `

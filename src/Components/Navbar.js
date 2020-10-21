@@ -58,10 +58,10 @@ const Container = styled.div`
       display: none;
     }
     & > .showLinks{
-      background-image: linear-gradient(#303030 5%, #685d9e); 
-      /* alternate colors 685d9e 7c6fbd */
+      background-image: linear-gradient(#272727 10%, #7468ad); 
       text-align: center;
       width: 100vw;
+      padding-bottom: 0px;
     }
   }
   `
@@ -72,7 +72,6 @@ const Top = styled.div`
   align-items: center;
   display: flex;
   a.home{
-    /* potential colors 874876, d5cbe6, 443e86, d2869c */
     color: #A594F9;
     font-size: 25px;
     font-weight: 900;

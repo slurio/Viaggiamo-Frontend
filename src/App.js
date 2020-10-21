@@ -11,7 +11,7 @@ import Login from './Components/Login'
 import Navbar from './Components/Navbar'
 
 function App() {
-  let [currentUser, setCurrentUser] = useState('')
+  let [currentUser, setCurrentUser] = useState('s')
   let [categories, setCategories] = useState('')
   let [voices, setVoices] = useState('')
   let [selectedCategory, setSelectedCategory] = useState('')
@@ -118,8 +118,8 @@ function App() {
             <Route path="/" exact render={() => <UserProfile updateProfile={updateProfile} currentUser={currentUser}/>} />
             <Route path="/speech" render={() => <SpeechText saveMessage={saveMessage} voices={voices} categories={currentUser.categories}/>}  />
             <Route path="/messages" render={() => <Message categories={categories} voices={voices}/>}/>
-            <Route path="/lessons" render={() => <Lessons updateAchievements={updateAchievements}/>} />
-            <Route path="/endless" render={() => <EndlessRun />} />
+            <Route path="/lessons" render={() => <Lessons />} />
+            <Route path="/endless" render={() => <EndlessRun updateAchievements={updateAchievements}/>} />
           </>
       }
     </div>
@@ -127,7 +127,6 @@ function App() {
 }
 
 export default  withRouter(App);
-
 
 // button backgrounds: #333333
 // button text color: #A594F9

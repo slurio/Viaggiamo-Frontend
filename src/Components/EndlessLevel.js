@@ -10,6 +10,7 @@ export default function LessonLevel(props){
   let [disabledClass, setDisabledClass] = useState('')
   let [showContinue, setShowContinue] = useState(false)
   let [answerColor, setAnswerColor] = useState('green')
+  let [gameOver, setGameOver] = useState(false)
   let [lives, setLives] = useState(3)
 
   function getFlag(){
@@ -63,6 +64,13 @@ export default function LessonLevel(props){
     )
   }
 
+  function updateAchievements(){
+    if(!gameOver){
+      props.updateAchievements(correctCount, props.currentLang)
+      setGameOver(true)
+    }
+  }  
+
   return(
     <Container>
       <div style={{display: 'flex'}}>
@@ -72,7 +80,8 @@ export default function LessonLevel(props){
       {
         lives === 0 ? 
         <>
-          <Question>That's the end of your run! You ended with {correctCount} answers correct!</Question>
+          {updateAchievements()}
+          <Question>That's the end of your run! You ended with {correctCount} correct answers!</Question>
           <Button onClick={props.resetLessons}>Try Again</Button>
         </>
         :
@@ -130,16 +139,18 @@ const MultiAnswer = styled.li`
   `
 
 const Button = styled.button`
-  margin-top: 5px;
+  margin: 20px;
   font-weight: bold;
-  color: #EBEBEB;
-  background-color: transparent;
-  border: 2px solid #A594F9;
+  color: #A594F9;
+  background-color: #333333;
+  font-size: 20px;
+  border: none;
   border-radius: 10px;
-  padding: 6px;
-  font-size: calc(10px + 2vmin);
-  &:hover{
-    color: #A594F9;
+  padding: 6px 0;
+
+  &:hover {
+    color: #272727;
+    background-color: #A594F9;
     cursor: pointer;
   }
   `

@@ -28,7 +28,6 @@ const Container = styled.div`
   flex-direction: column;
   align-items: center;
   justify-content: center;
-
   height: 100vh;
   `
 const Label = styled.label `
@@ -55,11 +54,11 @@ const Form = styled.form`
   margin-top: 30px;
   margin-bottom: 50px;
   padding: 20px;
-  background-color: #1e1e1e;
+  background-color: #272727;
   font-size: calc(8px + 2vmin);
   border-radius: 10px;
   width: 60vw;
-  border: 2px solid #A594F9;
+  box-shadow: 0px 8px 8px 2px #1c1c1c;
   & > input {
     font-size: calc(10px + 2vmin);
   }
@@ -69,16 +68,17 @@ const Form = styled.form`
   `
 
 const Button = styled.button`
-  margin-top: 20px;
+  margin: 20px 50px;
   font-weight: bold;
-  color: #1e1e1e;
-  background-color: #A594F9;
-  border: 2px solid #A594F9;
+  color: #A594F9;
+  background-color: #333333;
+  font-size: 20px;
+  border: none;
   border-radius: 10px;
-  padding: 6px;
-  font-size: calc(10px + 2vmin);
-  &:hover{
-    color: #EBEBEB;
+  padding: 6px 0;
+
+  &:hover {
+    color: #272727;
     background-color: #A594F9;
     cursor: pointer;
   }

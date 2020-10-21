@@ -35,7 +35,7 @@ function UserBio(props){
 
   return(
     <>
-      <Username>{props.currentUser.username.toUpperCase()}</Username>
+      {props.currentUser.username ? <Username>{props.currentUser.username.toUpperCase()}</Username> : null}
       <Img src={oldImg} />
 
       {
@@ -90,14 +90,13 @@ const Form = styled.form`
   & label {
     display: inline-flex;
     color: #A594F9;
-    background-color: transparent;
-    border: 2px solid #A594F9;
+    background-color: #333333;
+    border: none;
     border-radius: 10px;
     font-weight: bold;
-    padding: 6px;
-    cursor: pointer;
+    padding: 6px 30px;
     &:hover {
-      color: #EBEBEB;
+      color: #272727;
       background-color: #A594F9;
       cursor: pointer;
     }
@@ -108,14 +107,10 @@ const Button = styled.button`
   font-weight: bold;
   color: #A594F9;
   background-color: #333333;
-  /* border: 2px solid #A594F9; */
   font-size: 20px;
   border: none;
   border-radius: 10px;
-  padding-top: 6px;
-  padding-bottom: 6px;
-  padding-left: 30px;
-  padding-right: 30px;
+  padding: 6px 30px;
 
   &:hover {
     color: #272727;

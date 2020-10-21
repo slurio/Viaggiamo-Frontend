@@ -3,7 +3,7 @@ import styled from 'styled-components'
 import EndlessStart from '../Components/EndlessStart'
 import EndlessLevel from '../Components/EndlessLevel'
 
-export default class EndlessGame extends React.Component {
+export default class EndlessRun extends React.Component {
   state = {
     currentLang: 'French',
     start: false,
@@ -29,12 +29,20 @@ export default class EndlessGame extends React.Component {
       })
   }
 
+  resetEndless = () => {
+    this.setState({
+      currentLang: 'French',
+      start: false,
+      QnA: {}
+    })
+  }
+
   render(){
     return(
       <Container>
         {
           this.state.start
-          ? <EndlessLevel QnA={this.state.QnA} renderAnswer={this.renderAnswer} currentLang={this.state.currentLang}/>
+          ? <EndlessLevel QnA={this.state.QnA} updateAchievements={this.props.updateAchievements} resetEndless={this.resetEndless} renderAnswer={this.renderAnswer} currentLang={this.state.currentLang}/>
           : <EndlessStart renderAnswer={this.renderAnswer} startCourse={this.startCourse}/>
         }
       </Container>
@@ -43,8 +51,8 @@ export default class EndlessGame extends React.Component {
 }
 
 const Container = styled.div`
-  background-color: #1e1e1e;
-  box-shadow: 0px 0px 30px #A594F9;
+  background-color: #272727;
+  box-shadow: 0px 8px 8px 2px #1c1c1c;
   border-radius: 10px;
   padding: 20px;
   display: flex;
