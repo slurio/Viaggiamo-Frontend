@@ -42,7 +42,7 @@ function UserBio(props){
         editBtn === 'UPDATE'
         ? <>
           <Form>
-            <label for="file-upload">Custom Upload</label>
+            <label htmlFor="file-upload">Custom Upload</label>
             <input id="file-upload" type="file" name="avatar" accept="image/*" onChange={updateImage} />
             <textarea onChange={updateText} value={currentBio}></textarea>
           </Form>

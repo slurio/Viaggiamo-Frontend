@@ -42,6 +42,9 @@ const Header = styled.header `
   font-weight: bold;
   letter-spacing: 4px;
   font-size: calc(4px + 2vmin);
+  @media (max-width: 768px) {
+    font-size: 25px;
+  }
 `
 
 const Select = styled.select `
@@ -61,8 +64,7 @@ const Container = styled.div`
   font-size: calc(8px + 2vmin);
   display: flex;
   flex-direction: column;
-@media (max-width: 768px) {
-  flex-direction: column;
-  width: 30vh;
-}
+  @media (max-width: 768px) {
+    height: auto;
+  }
 `

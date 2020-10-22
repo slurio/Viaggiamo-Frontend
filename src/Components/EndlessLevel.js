@@ -139,6 +139,9 @@ const MultiAnswer = styled.li`
   &:hover {
     cursor: pointer;
   }
+  @media (max-width: 768px) {
+    font-size: 25px;
+  }
   `
 
 const Button = styled.button`
@@ -150,6 +153,10 @@ const Button = styled.button`
   border: none;
   border-radius: 10px;
   padding: 6px 20px;
+
+  @media (max-width: 768px) {
+    margin: 20px 10px;
+  }
 
   &:hover {
     color: #272727;

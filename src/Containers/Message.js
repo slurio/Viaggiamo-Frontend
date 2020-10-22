@@ -88,9 +88,11 @@ export default class Message extends React.Component {
 
 const Container = styled.div`
   display: flex;
-  flex-direction: row;
   align-items: center;
   justify-content: space-between;
+  @media (max-width: 768px) {
+    flex-direction: column;
+  }
   `
 const LeftBar = styled.div`
   background-color: #EBEBEB;
@@ -99,4 +101,8 @@ const LeftBar = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
+  @media (max-width: 768px) {
+    height: auto;
+    margin: 10px;
+  }
 `

@@ -79,6 +79,10 @@ const Button = styled.button`
   border-radius: 10px;
   padding: 6px 0;
 
+  @media (max-width: 768px) {
+    margin: 20px 10px;
+  }
+
   &:hover {
     color: #272727;
     background-color: #A594F9;
