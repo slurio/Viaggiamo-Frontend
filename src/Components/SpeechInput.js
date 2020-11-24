@@ -106,7 +106,8 @@ class SpeechInput extends React.Component {
   }
   
   translate = () => {
-    fetch("https://translate.googleapis.com/translate_a/single?client=gtx&sl=" + this.state.language + "&tl=" + this.props.translationLang + "&dt=t&q=" + encodeURI(this.props.text))
+    let temp = this.props.text.replace(/\./g, ',');
+    fetch("https://translate.googleapis.com/translate_a/single?client=gtx&sl=" + this.state.language + "&tl=" + this.props.translationLang + "&dt=t&q=" + encodeURI(temp))
     .then(resp=>resp.json())
     .then(data=> this.props.handleTranslatedText(data[0][0][0]))
   }

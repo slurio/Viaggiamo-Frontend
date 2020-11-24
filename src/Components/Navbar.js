@@ -1,19 +1,20 @@
-import React, { useState } from 'react'
+import React from 'react'
 import styled from 'styled-components'
 import { NavLink } from 'react-router-dom';
 
 function Navbar(props){
 
-  let [linkDisplay, setLinkDisplay] = useState('hideLinks')
-
   function openNavbar() {
-    linkDisplay === 'hideLinks'
-    ? setLinkDisplay('showLinks')
-    : setLinkDisplay('hideLinks')
+    const links = document.querySelector('.links')
+    links.style.height === '200px'
+    ? links.style.height = '0px'
+    : links.style.height = '200px'
   }
 
   function closeNavbar() {
-    setLinkDisplay('hideLinks')
+    if(window.matchMedia("(max-width: 768px)").matches){
+      document.querySelector('.links').style.height = '0px'
+    }
   }
 
   return(
@@ -24,7 +25,7 @@ function Navbar(props){
         <svg id="icon" onClick={openNavbar} viewBox="0 0 15 15" fill="none" xmlns="http://www.w3.org/2000/svg" width="25" height="30"><path d="M0 5.5h15m-15-4h15m-15 8h15m-15 4h15" stroke="currentColor"></path></svg>
       </Top>
 
-      <Bottom className={linkDisplay}>
+      <Bottom className={'links'}>
         <NavLink to="/endless" onClick={closeNavbar} >ENDLESS RUN</NavLink>
         <NavLink to="/lessons" onClick={closeNavbar} >LESSONS</NavLink>
         <NavLink to="/speech" onClick={closeNavbar} >TRANSLATOR</NavLink>
@@ -53,10 +54,10 @@ const Container = styled.div`
   }
   @media (max-width: 768px) {
     flex-direction: column;
-    & > .hideLinks{
-      display: none;
-    }
-    & > .showLinks{
+    & > .links{
+      transition: .5s;
+      height: 0px;
+      overflow: hidden;
       background-image: linear-gradient(#272727 10%, #7468ad); 
       text-align: center;
       width: 100vw;

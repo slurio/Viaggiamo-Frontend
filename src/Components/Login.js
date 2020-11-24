@@ -1,6 +1,5 @@
 import React from 'react'
 import styled from 'styled-components'
-import globe from '../images/worldlogo.png'
 import world from '../images/justworld.png'
 import plane from '../images/justplane.png'
 
@@ -12,7 +11,7 @@ function Login(props){
   }
   return(
     <Container> 
-      <div class="logoContainer">
+      <div className="logoContainer">
         <Img src={plane} alt="" />
         <Img src={world} alt="" />  
       </div>       

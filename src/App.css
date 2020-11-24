@@ -46,6 +46,12 @@
   margin: 10px;
   box-shadow: 0px 8px 8px 2px #1c1c1c;
 }
+@media (max-width: 768px) {
+  .speechoutput button, .SpeechInput button{
+    font-size: 20px;
+    padding: 5px 10px;
+  }
+}
 
 .SpeechInput{
   width: 45%;
@@ -169,8 +175,11 @@
 @media(max-width: 768px) {
   .MessageForm {
     width: 80vw;
-    margin-right: 5%;
-    margin-left: 5%;
+    margin: 10px;
+  }
+  .MessageForm button, .hearOutLoudButton {
+    font-size: 20px !important;
+    margin: 5px;
   }
 } 
 
