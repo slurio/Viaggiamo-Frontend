@@ -4,11 +4,11 @@ Lock downs are back in effect and you have now finished everything on Netflix an
 
 ## Video Demo
 
-Comming Soon...
+Comming Soon ...
 
 ## Try It Live
 
-Coming Soon...
+Coming Soon ...
 
 ## Dev Tools
 
