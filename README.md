@@ -1,6 +1,6 @@
 # Viaggiamo
 
-Lock downs are back in effect and you have now finished everything on Netflix and no new Tiger King is insight. There is no better time than now to learn a new language for your post Covid trip abroad! Viaggamo provides lessons, games, and translator feature for Spanish, French, Italian, and German.
+Lock downs are back in effect and you have now finished everything on Netflix and no new Tiger King is insight. There is no better time than now to learn a new language for your post Covid trip abroad! Viaggamo provides lessons, games, and translator feature for Spanish, French, Italian, and German. Also mobile friendly!
 
 ## Video Demo
 
