@@ -6,10 +6,6 @@ Lock downs are back in effect and you have now finished everything on Netflix an
 
 https://www.loom.com/share/2ffbf47626e7486992bf48231ef2224b
 
-## Try It Live
-
-Coming Soon ...
-
 ## Features
 
 A user must be logged in to access any features, and the login will persist until the user clicks 'Logout'. 
